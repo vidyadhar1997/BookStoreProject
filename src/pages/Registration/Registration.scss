@@ -1,0 +1,80 @@
+.cards{
+    width: 600px;
+    height: 520px;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    justify-content: space-evenly;
+}
+
+.HomeContainers{
+    justify-content: center; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    flex-direction: row;
+    margin-top: 98px;
+}
+.card-header{
+    width: 600px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color:white;
+}
+.FullNameInputs{
+    display: flex;
+    flex-direction: row;
+}
+.InputFieldsss{
+    display: flex;
+    flex-direction: column;
+}
+.headers{
+    background-color: brown;
+}
+button.btn.btn-primary{
+    width: 423px;
+    height: 57px;
+    background-color: brown;
+}
+.Buttons{
+    margin-top: 30px;
+}
+.col {
+    display: flex;
+    justify-content: flex-end;
+   
+    flex-basis: 0;
+  
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+// .InputField{
+//     height: 50px;
+//     width: 100%;
+// }
+// .buttonss{
+//  width: 388px;
+//  height: 61px;
+// }
+.inputField.form-control{
+    width: 300px;
+    height: 57px;
+}
+
+// .Email{
+//     margin-top: 40px;
+// }
+
+// // .card-header{
+
+// // }
+// .card-body {
+//     padding: 0%;
+// }
