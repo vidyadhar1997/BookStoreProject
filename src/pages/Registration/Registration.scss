@@ -14,9 +14,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
     flex-direction: row;
-    margin-top: 98px;
+    margin-top: 120px;
 }
 .card-header{
     width: 600px;
@@ -48,33 +47,12 @@ button.btn.btn-primary{
 .col {
     display: flex;
     justify-content: flex-end;
-   
     flex-basis: 0;
-  
     flex-grow: 1;
     max-width: 100%;
 }
 
-// .InputField{
-//     height: 50px;
-//     width: 100%;
-// }
-// .buttonss{
-//  width: 388px;
-//  height: 61px;
-// }
 .inputField.form-control{
     width: 300px;
     height: 57px;
 }
-
-// .Email{
-//     margin-top: 40px;
-// }
-
-// // .card-header{
-
-// // }
-// .card-body {
-//     padding: 0%;
-// }

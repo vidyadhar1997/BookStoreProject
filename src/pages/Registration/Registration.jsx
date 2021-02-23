@@ -23,7 +23,7 @@ export default function Registration() {
                             Full Name
                      </Form.Label>
                         <Col>
-                            <Form.Control variant="outlined" type="Email" className="inputField" placeholder="Full Name" />
+                            <Form.Control variant="outlined" type="Full Name" className="inputField" placeholder="Full Name" />
                         </Col>
                     </div>
                     <br></br>
@@ -50,7 +50,7 @@ export default function Registration() {
                         Phone Number
                      </Form.Label>
                     <Col>
-                        <Form.Control variant="outlined" className="inputField" type="Password" placeholder=" Phone Number" />
+                        <Form.Control variant="outlined" className="inputField" type="number" placeholder=" Phone Number" />
                     </Col>
                     </div>
                 <div className="Buttons">
