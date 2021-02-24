@@ -9,10 +9,23 @@ import { useHistory } from 'react-router-dom';
 
 export default function Login() {
 
+    const[email,setEmail]=React.useState('');
+    const EmailHandler=(e)=>{
+        setEmail(e.target.value)
+        console.log("Email=",email)
+    }
+
+    const[password,setPassword]=React.useState('');
+    const PasswordHandler=(e)=>{
+        setPassword(e.target.value)
+        console.log("Password=",password)
+    }
+
     const history=useHistory();
    const handleSignUP=()=>{
     history.push('/signup');
     }
+
     return (
         <div className="HomeContainer">
             <Card className="card">
@@ -29,7 +42,7 @@ export default function Login() {
                                 Email
                          </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" type="Email" className="inputField" placeholder="Email" />
+                                <Form.Control variant="outlined" type="Email" className="inputField" onChange={EmailHandler} placeholder="Email" />
                             </Col>
                         </div>
                         <br></br>
@@ -38,7 +51,7 @@ export default function Login() {
                                 Password
                          </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" className="inputField" type="Password" placeholder="Password" />
+                                <Form.Control  variant="outlined" className="inputField" type="Password" onChange={PasswordHandler} placeholder="Password" />
                             </Col>
                         </div>
                         <div className="Buttons">
