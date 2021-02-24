@@ -48,6 +48,7 @@ button.btn.btn-primary{
 .col {
     display: flex;
     justify-content: flex-end;
+    flex-direction: column;
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
