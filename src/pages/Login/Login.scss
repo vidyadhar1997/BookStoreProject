@@ -1,6 +1,6 @@
 .card{
-    width: 600px;
-    height: 360px;
+   // width: 0px;
+    height: 550px;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
@@ -8,9 +8,23 @@
     justify-content: space-evenly;
 }
 
+.heading{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: brown;
+    margin-bottom: 20px;
+}
+.lables{
+    display: flex;
+    justify-content: center;
+    margin-bottom: -27px;
+    margin-top: 20px;
+    font-size: 20px;
+}
 .HomeContainer{
     justify-content: center; 
-    width: 100%;
+    //width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,4 +65,8 @@ button.btn.btn-primary{
 .inputField.form-control{
     width: 300px;
     height: 57px;
+}
+.form-label{
+    display: flex;
+    align-items: center;
 }

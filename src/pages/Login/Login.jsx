@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import "../Login/Login.scss"
 import 'bootstrap/dist/css/bootstrap.css';
 import Form from 'react-bootstrap/Form'
-import { Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 export default function Login() {
     return (
@@ -16,6 +16,7 @@ export default function Login() {
                 </Card.Header>
                 </div>
                 <Card.Body>
+                    <h4 className="heading">Login</h4>
                     <div className="InputFieldss">
                         <div className="EmailInput">
                             <Form.Label>
@@ -27,16 +28,22 @@ export default function Login() {
                         </div>
                         <br></br>
                         <div className="PasswordInput">
-                        <Form.Label>
-                            Password
+                            <Form.Label>
+                                Password
                          </Form.Label>
-                        <Col>
-                            <Form.Control variant="outlined" className="inputField" type="Password" placeholder="Password" />
-                        </Col>
+                            <Col>
+                                <Form.Control variant="outlined" className="inputField" type="Password" placeholder="Password" />
+                            </Col>
                         </div>
-                    <div className="Buttons">
-                        <Button variant="primary">Login</Button>
-                    </div>
+                        <div className="Buttons">
+                            <Button>Login</Button>
+                        </div>
+                        <div className="lables">
+                            <label>Dont have an account with us?</label>
+                        </div>
+                        <div className="Buttons">
+                            <Button>SignUp</Button>
+                        </div>
                     </div>
                 </Card.Body>
             </Card>
