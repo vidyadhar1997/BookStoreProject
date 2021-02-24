@@ -1,3 +1,4 @@
 module.exports={
-    signUp:'/registration'
+    signUp:'/registration',
+    logins:'/login'
 }

@@ -7,6 +7,15 @@ export function signUp(signUpData) {
       return response;
     }
     catch (error) {
-      return error;npm 
+      return error;
+    }
+  }
+  export function login(loginData) {
+    try {
+      const response = axios.post(process.env.REACT_APP_USER_URL+userApiConstant.logins,loginData);
+      return response;
+    }
+    catch (error) {
+      return error;
     }
   }

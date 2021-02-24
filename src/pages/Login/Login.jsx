@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Form from 'react-bootstrap/Form'
 import { Col } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import { login } from '../../services/userServices';
 
 export default function Login() {
 
@@ -45,6 +46,15 @@ export default function Login() {
           if (!password.match("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}")) {
             setPasswordError("Password is not valid")
           }
+          const loginData={
+            email:email,
+            password:password
+          }
+          login(loginData).then((responce) => {
+            console.log("responce data==>", responce);
+        }).catch((error) => {
+            console.log("error is =",error);
+          })
     }
 
     return (
@@ -83,7 +93,7 @@ export default function Login() {
                             </Col>
                         </div>
                         <div className="Buttons">
-                            <Button type="submit"  onClick={Login}>Login</Button>
+                            <Button  onClick={Login}>Login</Button>
                         </div>
                         <div className="lables">
                             <label>Dont have an account with us?</label>
