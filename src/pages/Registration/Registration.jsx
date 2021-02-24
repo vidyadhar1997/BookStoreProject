@@ -5,9 +5,19 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Form from 'react-bootstrap/Form'
 import { Col } from 'react-bootstrap';
 import "../Registration/Registration.scss"
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function Registration() {
+
+    const history=useHistory();
+    const handleLogin=()=>{
+     history.push('/login');
+     }
+
+     const historys=useHistory();
+     const handleSubmit=()=>{
+        historys.push('/login');
+     }
 
     return (
         <div className="HomeContainers">
@@ -56,11 +66,11 @@ export default function Registration() {
                             </Col>
                         </div>
                         <div className="Buttons">
-                            <Button>Submit</Button>
+                            <Button onClick={handleSubmit}>Submit</Button>
                         </div>
                         <div className="Links">
                         <label htmlFor="ask" id="askForLogin">Have an account with us ?
-                        <Link>Login</Link></label>
+                        <Link onClick={handleLogin}>Login</Link></label>
                         </div>
                     </div>
                 </Card.Body>

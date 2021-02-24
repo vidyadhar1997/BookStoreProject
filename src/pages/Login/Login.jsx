@@ -5,8 +5,14 @@ import "../Login/Login.scss"
 import 'bootstrap/dist/css/bootstrap.css';
 import Form from 'react-bootstrap/Form'
 import { Col } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
+
+    const history=useHistory();
+   const handleSignUP=()=>{
+    history.push('/signup');
+    }
     return (
         <div className="HomeContainer">
             <Card className="card">
@@ -42,7 +48,7 @@ export default function Login() {
                             <label>Dont have an account with us?</label>
                         </div>
                         <div className="Buttons">
-                            <Button>SignUp</Button>
+                            <Button onClick={handleSignUP}>SignUp</Button>
                         </div>
                     </div>
                 </Card.Body>
