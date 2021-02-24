@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import { Col } from 'react-bootstrap';
 import "../Registration/Registration.scss"
 import { Link, useHistory } from 'react-router-dom';
+import { signUp } from '../../services/userServices';
 
 export default function Registration() {
 
@@ -67,6 +68,17 @@ export default function Registration() {
            if (!number.match("^[0-9]{2}[ ][0-9]{10}$")) {
             setPhoneNumberError("Phone Number is not valid")
           }
+          const signUpData={
+            fullName:name,
+            email:email,
+            password:password,
+            phone:number
+          }
+          signUp(signUpData).then((responce) => {
+            console.log("responce data==>", responce);
+        }).catch((error) => {
+            console.log("error is =",error);
+          })
      }
 
     //  const historys=useHistory();
@@ -134,7 +146,7 @@ export default function Registration() {
                             </Col>
                         </div>
                         <div className="Buttons">
-                            <Button  type="submit"  onClick={SignUp} >Submit</Button>
+                            <Button onClick={SignUp} >Submit</Button>
                         </div>
                         <div className="Links">
                         <label htmlFor="ask" id="askForLogin">Have an account with us ?

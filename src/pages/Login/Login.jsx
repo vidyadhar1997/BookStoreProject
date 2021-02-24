@@ -42,7 +42,7 @@ export default function Login() {
         if (!email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) {
             setEmailError("Email is invalid")
           }
-          if (!password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}")) {
+          if (!password.match("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}")) {
             setPasswordError("Password is not valid")
           }
     }
@@ -76,7 +76,7 @@ export default function Login() {
                                 Password
                          </Form.Label>
                             <Col>
-                                <Form.Control  variant="outlined" required  type="Password" className="inputField" onChange={PasswordHandler} placeholder="Password" />
+                                <Form.Control  variant="outlined" required   type="text" className="inputField" onChange={PasswordHandler} placeholder="Password" />
                                 <Form.Control.Feedback type="invalid">
                                  {PasswordError}
                             </Form.Control.Feedback>
