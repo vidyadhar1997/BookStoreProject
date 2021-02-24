@@ -43,9 +43,10 @@ export default function Login() {
         if (!email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) {
             setEmailError("Email is invalid")
           }
-          if (!password.match("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}")) {
+          if (!password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}")) {
             setPasswordError("Password is not valid")
           }
+          if ((email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) && (password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}"))) {
           const loginData={
             email:email,
             password:password
@@ -55,6 +56,7 @@ export default function Login() {
         }).catch((error) => {
             console.log("error is =",error);
           })
+        }
     }
 
     return (
@@ -91,7 +93,7 @@ export default function Login() {
                             </Col>
                         </div>
                         <div className="Buttons">
-                            <Button  onClick={Login}>Login</Button>
+                            <Button type="submit"  onClick={Login}>Login</Button>
                         </div>
                         <div className="lables">
                             <label>Dont have an account with us?</label>

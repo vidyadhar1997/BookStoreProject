@@ -82,18 +82,10 @@ button.btn.btn-primary{
     display: flex;
     align-items: center;
 }
-
-// @media screen and (max-width: 480px) {
-//     .card-body{
-//         margin-left: 70px;
-
-//     }
-//     .HomeContainer{
-//         margin-top: 10px;
-//     }
-   
-//   }
-
+// .EmailError{
+//     display: flex;
+//     // flex-direction: column;
+// }
   @media screen and (max-width: 480px) {
     .card-body{
         margin-right: 20px;
