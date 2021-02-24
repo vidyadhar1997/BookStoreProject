@@ -1,6 +1,6 @@
 .card{
-   // width: 0px;
-    height: 600px;
+    width: 550px;
+    height: 498px;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
@@ -18,11 +18,10 @@
 .col {
     display: flex;
     justify-content: flex-end;
-    flex-direction: column;
+    /* flex-direction: column; */
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
-    //height: 90x;
 }
 .lables{
     display: flex;
@@ -37,8 +36,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    margin-top: 170px;
+    flex-direction: column;
+    margin-top: 88px;
 }
 .card-header{
     width: 600px;
@@ -60,8 +59,12 @@
     display: flex;
     flex-direction: column;
 }
+// .header{
+//     background-color: brown;
+// }
 .header{
-    background-color: brown;
+    font-size: 45px;
+    color: brown;
 }
 button.btn.btn-primary{
     width: 423px;
@@ -79,3 +82,31 @@ button.btn.btn-primary{
     display: flex;
     align-items: center;
 }
+
+// @media screen and (max-width: 480px) {
+//     .card-body{
+//         margin-left: 70px;
+
+//     }
+//     .HomeContainer{
+//         margin-top: 10px;
+//     }
+   
+//   }
+
+  @media screen and (max-width: 480px) {
+    .card-body{
+        margin-right: 20px;
+
+    }
+    .HomeContainer{
+        margin-top: 10px;
+    }
+    
+.InputFieldss {
+    display: flex;
+    flex-direction: column;
+    padding-left: 92px;
+}
+   
+  }

@@ -59,12 +59,10 @@ export default function Login() {
 
     return (
         <div className="HomeContainer">
-            <Card className="card">
-                <div className="header">
-                    <Card.Header>
-                        BookStore App
-                </Card.Header>
-                </div>
+             <h4 className="header"> 
+                BookStore App
+                </h4>
+            <Card >
                 <Card.Body>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <h4 className="heading">Login</h4>

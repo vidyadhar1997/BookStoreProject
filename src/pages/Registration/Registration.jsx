@@ -88,12 +88,10 @@ export default function Registration() {
 
     return (
         <div className="HomeContainers">
+            <h4 className="header"> 
+                BookStore App
+                </h4>
             <Card className="cards">
-                <div className="headers">
-                    <Card.Header>
-                        BookStore App
-            </Card.Header>
-                </div>
                 <Card.Body>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <h4 className="heading">Registration</h4>
@@ -101,7 +99,7 @@ export default function Registration() {
                         <div className="FullNameInputs">
                             <Form.Label >
                                 Full Name
-                     </Form.Label>
+                         </Form.Label>
                             <Col>
                                 <Form.Control variant="outlined" type="Full Name" required className="inputField" onChange={NameHandler} placeholder="Full Name" />
                                 <Form.Control.Feedback type="invalid">

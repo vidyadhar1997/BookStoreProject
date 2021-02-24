@@ -1,6 +1,6 @@
 .cards{
-    width: 600px;
-    height: 700px;
+    width: 580px;
+    height: 580px;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
@@ -14,8 +14,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    margin-top: 120px;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.header{
+    font-size:45px;
+    color: brown;
 }
 .card-header{
     width: 600px;
@@ -48,7 +52,6 @@ button.btn.btn-primary{
 .col {
     display: flex;
     justify-content: flex-end;
-    flex-direction: column;
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
