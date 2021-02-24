@@ -9,6 +9,30 @@ import { Link, useHistory } from 'react-router-dom';
 
 export default function Registration() {
 
+    const[name,setName]=React.useState('');
+    const NameHandler=(event)=>{
+        setName(event.target.value)
+        console.log("Full Name=",name)
+    }
+
+    const[email,setEmail]=React.useState('');
+    const EmailHandler=(event)=>{
+        setEmail(event.target.value)
+        console.log("Email=",email)
+    }
+
+    const[password,setPassword]=React.useState('');
+    const PasswordHandler=(event)=>{
+        setPassword(event.target.value)
+        console.log("Password=",password)
+    }
+
+    const[number,setNumber]=React.useState('');
+    const NumberHandler=(event)=>{
+        setNumber(event.target.value)
+        console.log("Phone Number=",number)
+    }
+
     const history=useHistory();
     const handleLogin=()=>{
      history.push('/login');
@@ -35,7 +59,7 @@ export default function Registration() {
                                 Full Name
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" type="Full Name" className="inputField" placeholder="Full Name" />
+                                <Form.Control variant="outlined" type="Full Name" className="inputField" onChange={NameHandler} placeholder="Full Name" />
                             </Col>
                         </div>
                         <br></br>
@@ -44,7 +68,7 @@ export default function Registration() {
                                 Email
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" type="Email" className="inputField" placeholder="Email" />
+                                <Form.Control variant="outlined" type="Email" className="inputField" onChange={EmailHandler} placeholder="Email" />
                             </Col>
                         </div>
                         <br></br>
@@ -53,7 +77,7 @@ export default function Registration() {
                                 Password
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" className="inputField" type="Password" placeholder="Password" />
+                                <Form.Control variant="outlined" className="inputField" type="Password"  onChange={PasswordHandler} placeholder="Password" />
                             </Col>
                         </div>
                         <br></br>
@@ -62,7 +86,7 @@ export default function Registration() {
                                 Phone Number
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" className="inputField" type="number" placeholder=" Phone Number" />
+                                <Form.Control variant="outlined" className="inputField" type="text" onChange={NumberHandler} placeholder=" Phone Number" />
                             </Col>
                         </div>
                         <div className="Buttons">

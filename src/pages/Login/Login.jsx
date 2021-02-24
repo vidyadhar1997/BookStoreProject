@@ -10,14 +10,14 @@ import { useHistory } from 'react-router-dom';
 export default function Login() {
 
     const[email,setEmail]=React.useState('');
-    const EmailHandler=(e)=>{
-        setEmail(e.target.value)
+    const EmailHandler=(event)=>{
+        setEmail(event.target.value)
         console.log("Email=",email)
     }
 
     const[password,setPassword]=React.useState('');
-    const PasswordHandler=(e)=>{
-        setPassword(e.target.value)
+    const PasswordHandler=(event)=>{
+        setPassword(event.target.value)
         console.log("Password=",password)
     }
 
