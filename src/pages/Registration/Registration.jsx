@@ -9,6 +9,17 @@ import { Link, useHistory } from 'react-router-dom';
 
 export default function Registration() {
 
+    const [validated, setValidated] = React.useState(false);
+    const handleSubmit = (event) => {
+      const form = event.currentTarget;
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      setValidated(true);
+    };
+
+
     const[name,setName]=React.useState('');
     const NameHandler=(event)=>{
         setName(event.target.value)
@@ -38,10 +49,30 @@ export default function Registration() {
      history.push('/login');
      }
 
-     const historys=useHistory();
-     const handleSubmit=()=>{
-        historys.push('/login');
+     const[FullNameError,setFullNameError]=React.useState('');
+     const[EmailError,setEmailError]=React.useState('');
+     const[PasswordError,setPasswordError]=React.useState('');
+     const[PhoneNumberError,setPhoneNumberError]=React.useState('');
+     const SignUp=()=>{
+
+        if (!name.match("^[A-Z]{1}[a-z]{2,}$")) {
+          setFullNameError("Full name is not valid")
+          }
+         if (!email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) {
+             setEmailError("Email is invalid")
+           }
+           if (!password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}")) {
+             setPasswordError("Password is not valid")
+           }
+           if (!number.match("^[0-9]{2}[ ][0-9]{10}$")) {
+            setPhoneNumberError("Phone Number is not valid")
+          }
      }
+
+    //  const historys=useHistory();
+    //  const handleSubmit=()=>{
+    //     historys.push('/login');
+    //  }
 
     return (
         <div className="HomeContainers">
@@ -52,6 +83,7 @@ export default function Registration() {
             </Card.Header>
                 </div>
                 <Card.Body>
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <h4 className="heading">Registration</h4>
                     <div className="InputFieldsss">
                         <div className="FullNameInputs">
@@ -59,7 +91,10 @@ export default function Registration() {
                                 Full Name
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" type="Full Name" className="inputField" onChange={NameHandler} placeholder="Full Name" />
+                                <Form.Control variant="outlined" type="Full Name" required className="inputField" onChange={NameHandler} placeholder="Full Name" />
+                                <Form.Control.Feedback type="invalid">
+                                 {FullNameError}
+                            </Form.Control.Feedback>
                             </Col>
                         </div>
                         <br></br>
@@ -68,7 +103,10 @@ export default function Registration() {
                                 Email
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" type="Email" className="inputField" onChange={EmailHandler} placeholder="Email" />
+                                <Form.Control variant="outlined" type="Email" required className="inputField" onChange={EmailHandler} placeholder="Email" />
+                                <Form.Control.Feedback type="invalid">
+                                 {EmailError}
+                            </Form.Control.Feedback>
                             </Col>
                         </div>
                         <br></br>
@@ -77,7 +115,10 @@ export default function Registration() {
                                 Password
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" className="inputField" type="Password"  onChange={PasswordHandler} placeholder="Password" />
+                                <Form.Control variant="outlined" className="inputField" required type="Password"  onChange={PasswordHandler} placeholder="Password" />
+                                <Form.Control.Feedback type="invalid">
+                                {PasswordError}
+                            </Form.Control.Feedback>
                             </Col>
                         </div>
                         <br></br>
@@ -86,17 +127,21 @@ export default function Registration() {
                                 Phone Number
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" className="inputField" type="text" onChange={NumberHandler} placeholder=" Phone Number" />
+                                <Form.Control variant="outlined" className="inputField" required type="text" onChange={NumberHandler} placeholder=" Phone Number" />
+                                <Form.Control.Feedback type="invalid">
+                                 {PhoneNumberError}
+                            </Form.Control.Feedback>
                             </Col>
                         </div>
                         <div className="Buttons">
-                            <Button onClick={handleSubmit}>Submit</Button>
+                            <Button  type="submit"  onClick={SignUp} >Submit</Button>
                         </div>
                         <div className="Links">
                         <label htmlFor="ask" id="askForLogin">Have an account with us ?
                         <Link onClick={handleLogin}>Login</Link></label>
                         </div>
                     </div>
+                    </Form>
                 </Card.Body>
             </Card>
         </div>
