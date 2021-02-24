@@ -74,3 +74,19 @@ button.btn.btn-primary{
     padding-bottom: 20px; 
     font-size: 21px;
 }
+
+@media screen and (max-width: 480px) {
+    .card-body{
+        margin-left: 113px;
+
+    }
+    .HomeContainer{
+        margin-top: 10px;
+    }
+    
+.InputFieldss {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+}
