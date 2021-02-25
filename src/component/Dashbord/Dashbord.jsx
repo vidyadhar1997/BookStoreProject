@@ -28,9 +28,15 @@ export default function Dashboard() {
                    <div className="main-card-con">  
                     <Card>
                          <div className="cardContainer">
-                              
+                             <div className="bookImage">
+                            </div> 
                           <div>{note.bookName}</div>
-
+                          <div>{note.author}</div>
+                          <div>{note.price} </div>
+                        <div>
+                        <button type="button" className="bagButton">ADD TO BAG</button>
+                        <button type="button" className="wishlist button">WISHLIST</button>
+                        </div>
                           </div>
                                             
                       </Card>

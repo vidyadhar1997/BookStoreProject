@@ -15,11 +15,13 @@ export default function Login() {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
         event.preventDefault();
-        event.stopPropagation();
+        event.stopPropagation(a);
       }
       setValidated(true);
     };
-
+    const[erroremailE,setemailErrorE]=React.useState(false);
+    const[passwordE,setPasswordE]=React.useState(false);
+    
     const[email,setEmail]=React.useState('');
     const EmailHandler=(event)=>{
         setEmail(event.target.value)
@@ -37,16 +39,28 @@ export default function Login() {
     history.push('/signup');
     }
 
-    const[EmailError,setEmailError]=React.useState('');
-    const[PasswordError,setPasswordError]=React.useState('');
-    const Login=()=>{
+    // const[EmailError,setEmailError]=React.useState('');
+    // const[PasswordError,setPasswordError]=React.useState('');
+
+    const validation=()=>{
+        var check=true;
         if (!email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) {
-            setEmailError("Email is invalid")
+            // setEmailError("Email is invalid")
+             check=false;
+             setemailErrorE(true)
           }
           if (!password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}")) {
-            setPasswordError("Password is not valid")
+            // setPasswordError("Password is not valid")
+            check=false;
+             setPasswordE(true)
           }
-          if ((email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) && (password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}"))) {
+          return check;
+}
+
+    const Login=()=>{
+        setemailErrorE(false)
+        setPasswordE(false)
+          if (validation()) {
           const loginData={
             email:email,
             password:password
@@ -74,9 +88,9 @@ export default function Login() {
                                 Email
                          </Form.Label>
                          <Col>
-                            <Form.Control variant="outlined" required type="Email" className="inputField" onChange={EmailHandler} placeholder="Email" />
+                            <Form.Control variant="outlined" required type="Email" className="inputField" onChange={EmailHandler} placeholder="Email" isInvalid={!!erroremailE} />
                             <Form.Control.Feedback type="invalid">
-                                  {EmailError}
+                                  Email is invalid
                             </Form.Control.Feedback>
                             </Col>
                         </div>
@@ -86,9 +100,9 @@ export default function Login() {
                                 Password
                          </Form.Label>
                             <Col>
-                                <Form.Control  variant="outlined" required   type="text" className="inputField" onChange={PasswordHandler} placeholder="Password" />
+                                <Form.Control  variant="outlined" required   type="text" className="inputField" onChange={PasswordHandler} placeholder="Password" isInvalid={!!passwordE} />
                                 <Form.Control.Feedback type="invalid">
-                                 {PasswordError}
+                                Password is invalid
                             </Form.Control.Feedback>
                             </Col>
                         </div>
