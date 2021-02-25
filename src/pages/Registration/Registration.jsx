@@ -20,6 +20,10 @@ export default function Registration() {
       setValidated(true);
     };
 
+    const[errorFullName,setFullNameErrors]=React.useState(false);
+    const[errorEmail,setemailErrors]=React.useState(false);
+    const[errorPassword,setPasswordErrors]=React.useState(false);
+    const[errorPhoneNumber,setPhoneNumberErrors]=React.useState(false);
 
     const[name,setName]=React.useState('');
     const NameHandler=(event)=>{
@@ -50,24 +54,30 @@ export default function Registration() {
      history.push('/login');
      }
 
-     const[FullNameError,setFullNameError]=React.useState('');
-     const[EmailError,setEmailError]=React.useState('');
-     const[PasswordError,setPasswordError]=React.useState('');
-     const[PhoneNumberError,setPhoneNumberError]=React.useState('');
-     const SignUp=()=>{
-
+     const validation=()=>{
+        var check=true;
         if (!name.match("^[A-Z]{1}[a-z]{2,}$")) {
-          setFullNameError("Full name is not valid")
+            setFullNameErrors("Full name is not valid")
+            }
+        if (!email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) {
+             check=false;
+             setemailErrors(true)
           }
-         if (!email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) {
-             setEmailError("Email is invalid")
-           }
-           if (!password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}")) {
-             setPasswordError("Password is not valid")
-           }
-           if (!number.match("^[0-9]{2}[ ][0-9]{10}$")) {
-            setPhoneNumberError("Phone Number is not valid")
+          if (!password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}")) {
+            check=false;
+            setPasswordErrors(true)
           }
+          if (!number.match("^[0-9]{10}$")) {
+            setPhoneNumberErrors("Phone Number is not valid")
+          }
+          return check;
+}
+     const SignUp=()=>{
+        setFullNameErrors(false)
+        setemailErrors(false)
+        setPasswordErrors(false)
+        setPhoneNumberErrors(false)
+          if (validation()) {
           const signUpData={
             fullName:name,
             email:email,
@@ -75,11 +85,16 @@ export default function Registration() {
             phone:number
           }
           signUp(signUpData).then((responce) => {
+            if (responce.status === 200) {
+              history.push('/login');
+            }
             console.log("responce data==>", responce);
+
         }).catch((error) => {
             console.log("error is =",error);
           })
      }
+    }
 
     //  const historys=useHistory();
     //  const handleSubmit=()=>{
@@ -101,9 +116,9 @@ export default function Registration() {
                                 Full Name
                          </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" type="Full Name" required className="inputField" onChange={NameHandler} placeholder="Full Name" />
+                                <Form.Control variant="outlined" type="Full Name" required className="inputField" onChange={NameHandler} placeholder="Full Name" isInvalid={!!errorFullName} />
                                 <Form.Control.Feedback type="invalid">
-                                 {FullNameError}
+                                 Full Name is not valid
                             </Form.Control.Feedback>
                             </Col>
                         </div>
@@ -113,9 +128,9 @@ export default function Registration() {
                                 Email
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" type="Email" required className="inputField" onChange={EmailHandler} placeholder="Email" />
+                                <Form.Control variant="outlined" type="Email" required className="inputField" onChange={EmailHandler} placeholder="Email" isInvalid={!!errorEmail} />
                                 <Form.Control.Feedback type="invalid">
-                                 {EmailError}
+                                 Email is not valid
                             </Form.Control.Feedback>
                             </Col>
                         </div>
@@ -125,9 +140,9 @@ export default function Registration() {
                                 Password
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" className="inputField" required type="Password"  onChange={PasswordHandler} placeholder="Password" />
+                                <Form.Control variant="outlined" className="inputField" required type="Password"  onChange={PasswordHandler} placeholder="Password" isInvalid={errorPassword} />
                                 <Form.Control.Feedback type="invalid">
-                                {PasswordError}
+                               Password is not valid
                             </Form.Control.Feedback>
                             </Col>
                         </div>
@@ -137,9 +152,9 @@ export default function Registration() {
                                 Phone Number
                      </Form.Label>
                             <Col>
-                                <Form.Control variant="outlined" className="inputField" required type="text" onChange={NumberHandler} placeholder=" Phone Number" />
+                                <Form.Control variant="outlined" className="inputField" required type="text" onChange={NumberHandler} placeholder=" Phone Number" isInvalid={errorPhoneNumber} />
                                 <Form.Control.Feedback type="invalid">
-                                 {PhoneNumberError}
+                                 Phone number is not valid
                             </Form.Control.Feedback>
                             </Col>
                         </div>

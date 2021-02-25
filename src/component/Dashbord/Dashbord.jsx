@@ -3,6 +3,7 @@ import { getAllBooks } from '../../services/bookServices';
 import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../Dashbord/Dashbord.scss'
+import LetUsC from '../../assets/letUsC.jpg'
 
 
 export default function Dashboard() {
@@ -29,13 +30,16 @@ export default function Dashboard() {
                     <Card>
                          <div className="cardContainer">
                              <div className="bookImage">
+                             <img   className="imgage" src={LetUsC}/>
                             </div> 
-                          <div>{note.bookName}</div>
-                          <div>{note.author}</div>
-                          <div>{note.price} </div>
-                        <div>
+                            <div className="content">
+                          <div className="BookName">{note.bookName}</div>
+                          <div className="Author">{note.author}</div>
+                          <div className="rupees">Rs. {note.price} </div>
+                        <div className="Buttonss">
                         <button type="button" className="bagButton">ADD TO BAG</button>
-                        <button type="button" className="wishlist button">WISHLIST</button>
+                        <button type="button" className="wishlistButton">WISHLIST</button>
+                        </div>
                         </div>
                           </div>
                                             

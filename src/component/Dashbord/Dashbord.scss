@@ -8,8 +8,8 @@
     margin-left: 10%;
 }
 .cardContainer{
-    width: 210px;
-    height: 250px;
+    width: 245px;
+    height: 330px;
     
     // flex-direction: column;
     // align-items: center;
@@ -33,6 +33,53 @@
 }
 .bookImage{
     width: 100%;
-    height: 145px;
+    height: 168px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #F5F5F5;
+}
+
+.bagButton{
+    width: 107px;
+    background-color: brown;
+    border: none;
+    height: 33px;
+    font-size: 12px;
+    color: white;
+}
+.wishlistButton{
+    background-color: white;
+    padding: 3px;
+    font-size: 12px;
+    width: 92px;
+}
+.Buttonss{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 15px;
+}
+.imgage{
+    width: 109px;
+    height: 141px;
+}
+.rupees{
+    font-weight: 700;
+    margin-top: 8px;
+}
+.BookName{
+    font-size: 20px;
+    font-weight: 600;
+}
+.Author{
+    color:#BEBEBE;
+    margin-top: -4px;
+    font-size: 14px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    padding: 13px;
 }

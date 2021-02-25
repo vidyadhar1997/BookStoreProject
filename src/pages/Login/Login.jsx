@@ -12,110 +12,108 @@ export default function Login() {
 
     const [validated, setValidated] = React.useState(false);
     const handleSubmit = (event) => {
-      const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation(a);
-      }
-      setValidated(true);
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation(a);
+        }
+        setValidated(true);
     };
-    const[erroremailE,setemailErrorE]=React.useState(false);
-    const[passwordE,setPasswordE]=React.useState(false);
-    
-    const[email,setEmail]=React.useState('');
-    const EmailHandler=(event)=>{
+    const [errorEmail, setemailErrorE] = React.useState(false);
+    const [errorPassword, setPasswordE] = React.useState(false);
+
+    const [email, setEmail] = React.useState('');
+    const EmailHandler = (event) => {
         setEmail(event.target.value)
-        console.log("Email=",email)
+        console.log("Email=", email)
     }
 
-    const[password,setPassword]=React.useState('');
-    const PasswordHandler=(event)=>{
+    const [password, setPassword] = React.useState('');
+    const PasswordHandler = (event) => {
         setPassword(event.target.value)
-        console.log("Password=",password)
+        console.log("Password=", password)
     }
 
-    const history=useHistory();
-    const handleSignUP=()=>{
-    history.push('/signup');
+    const history = useHistory();
+    const handleSignUP = () => {
+        history.push('/signup');
     }
 
-    // const[EmailError,setEmailError]=React.useState('');
-    // const[PasswordError,setPasswordError]=React.useState('');
-
-    const validation=()=>{
-        var check=true;
+    const validation = () => {
+        var check = true;
         if (!email.match("^[a-zA-Z0-9]{1,}([.]?[-]?[+]?[a-zA-Z0-9]{1,})?[@]{1}[a-zA-Z0-9]{1,}[.]{1}[a-z]{2,3}([.]?[a-z]{2})?$")) {
-            // setEmailError("Email is invalid")
-             check=false;
-             setemailErrorE(true)
-          }
-          if (!password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}")) {
-            // setPasswordError("Password is not valid")
-            check=false;
-             setPasswordE(true)
-          }
-          return check;
-}
+            check = false;
+            setemailErrorE(true)
+        }
+        if (!password.match("[A-Za-z0-9!@#$%^&*()_]{6,20}")) {
+            check = false;
+            setPasswordE(true)
+        }
+        return check;
+    }
 
-    const Login=()=>{
+    const Login = () => {
         setemailErrorE(false)
         setPasswordE(false)
-          if (validation()) {
-          const loginData={
-            email:email,
-            password:password
-          }
-          login(loginData).then((responce) => {
-            console.log("responce data==>", responce);
-        }).catch((error) => {
-            console.log("error is =",error);
-          })
+        if (validation()) {
+            const loginData = {
+                email: email,
+                password: password
+            }
+            login(loginData).then((responce) => {
+                if (responce.status === 200) {
+                    history.push('/dashbord');
+                }
+                console.log("responce data==>", responce);
+            }).catch((error) => {
+                console.log("error is =", error);
+            })
         }
     }
 
     return (
         <div className="HomeContainer">
-             <h4 className="header"> 
+            <h4 className="header">
                 BookStore App
                 </h4>
             <Card >
                 <Card.Body>
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <h4 className="heading">Login</h4>
-                    <div className="InputFieldss">
-                        <div className="EmailInput">
-                            <Form.Label>
-                                Email
+                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                        <h4 className="heading">Login</h4>
+                        <div className="InputFieldss">
+                            <div className="EmailInput">
+                                <Form.Label>
+                                    Email
                          </Form.Label>
-                         <Col>
-                            <Form.Control variant="outlined" required type="Email" className="inputField" onChange={EmailHandler} placeholder="Email" isInvalid={!!erroremailE} />
-                            <Form.Control.Feedback type="invalid">
-                                  Email is invalid
+                                <Col>
+                                    <Form.Control variant="outlined" required type="Email" className="inputField" onChange={EmailHandler} placeholder="Email" isInvalid={!!errorEmail} />
+                                    <Form.Control.Feedback type="invalid">
+                                        Email is invalid
                             </Form.Control.Feedback>
-                            </Col>
-                        </div>
-                        <br></br>
-                        <div className="PasswordInput">
-                            <Form.Label>
-                                Password
+                                </Col>
+                            </div>
+                            <br></br>
+                            <div className="PasswordInput">
+                                <Form.Label>
+                                    Password
                          </Form.Label>
-                            <Col>
-                                <Form.Control  variant="outlined" required   type="text" className="inputField" onChange={PasswordHandler} placeholder="Password" isInvalid={!!passwordE} />
-                                <Form.Control.Feedback type="invalid">
-                                Password is invalid
+                                <Col>
+                                    <Form.Control variant="outlined" required type="text" className="inputField" onChange={PasswordHandler} placeholder="Password" isInvalid={!!errorPassword} />
+                                    <Form.Control.Feedback type="invalid">
+                                        Password is invalid
                             </Form.Control.Feedback>
-                            </Col>
+                                </Col>
+                            </div>
+                            <div className="Buttons">
+                                <Button onClick={Login}>Login</Button>
+                            </div>
+                            <div className="lables">
+                                <label>Dont have an account with us?</label>
+                            </div>
+                            <div className="Buttons">
+                                <Button onClick={handleSignUP}>SignUp</Button>
+                            </div>
                         </div>
-                        <div className="Buttons">
-                            <Button onClick={Login}>Login</Button>
-                        </div>
-                        <div className="lables">
-                            <label>Dont have an account with us?</label>
-                        </div>
-                        <div className="Buttons">
-                            <Button onClick={handleSignUP}>SignUp</Button>
-                        </div>
-                    </div>
                     </Form>
                 </Card.Body>
             </Card>
