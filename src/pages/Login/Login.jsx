@@ -93,7 +93,7 @@ export default function Login() {
                             </Col>
                         </div>
                         <div className="Buttons">
-                            <Button type="submit"  onClick={Login}>Login</Button>
+                            <Button onClick={Login}>Login</Button>
                         </div>
                         <div className="lables">
                             <label>Dont have an account with us?</label>
