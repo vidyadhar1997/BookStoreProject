@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../Dashbord/Dashbord.scss'
 import LetUsC from '../../assets/letUsC.jpg'
+import AppBar from '../AppBar/AppBar';
 
 
 export default function Dashboard() {
@@ -22,7 +23,8 @@ export default function Dashboard() {
     }, []);
 
     return (
-
+        <div>
+        <AppBar/>
         <div className="bookContainer">
             {books.map((note, index) => {
                 return (
@@ -48,6 +50,7 @@ export default function Dashboard() {
                     </div>
                 );
             })}
+        </div>
         </div>
     )
 
