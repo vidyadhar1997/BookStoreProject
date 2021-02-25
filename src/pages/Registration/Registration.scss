@@ -1,12 +1,12 @@
-.cards{
-    width: 580px;
-    height: 580px;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-shrink: 1;
-    justify-content: space-evenly;
-}
+// .cards{
+//     width: 580px;
+//     height: auto;
+//     flex-direction: column;
+//     align-items: center;
+//     flex-wrap: wrap;
+//     flex-shrink: 1;
+//     justify-content: space-evenly;
+// }
 
 .HomeContainers{
     justify-content: center; 
@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 .header{
     font-size:45px;
@@ -73,21 +73,31 @@ button.btn.btn-primary{
 .Links{
     margin-top: 14px;
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
-    margin-bottom: -75px;
     padding-bottom: 20px; 
     font-size: 21px;
 }
 
 @media screen and (max-width: 480px) {
     .card-body{
-        margin-left: 113px;
+        margin-left: 71px;
 
     }
     .HomeContainer{
         margin-top: 10px;
     }
+    
+    button.btn.btn-primary {
+        width: 380px;
+        height: 57px;
+        background-color: brown;
+        font-size: 25px;
+    }
+
+.inputField.form-control {
+    width: 288px;
+    height: 57px;
+}
     
 .InputFieldss {
     display: flex;

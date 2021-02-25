@@ -1,5 +1,8 @@
 .AppBar{
     background-color: brown;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 //   display: flex;
 //   flex-direction: column;
 //   justify-content: space-between;

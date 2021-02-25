@@ -96,11 +96,6 @@ export default function Registration() {
      }
     }
 
-    //  const historys=useHistory();
-    //  const handleSubmit=()=>{
-    //     historys.push('/login');
-    //  }
-
     return (
         <div className="HomeContainers">
             <h4 className="header"> 
