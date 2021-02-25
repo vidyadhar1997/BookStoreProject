@@ -1,0 +1,33 @@
+.bookContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    width: 80%;
+    margin-left: 10%;
+}
+.cardContainer{
+    width: 210px;
+    height: 250px;
+    
+    // flex-direction: column;
+    // align-items: center;
+    // flex-wrap: wrap;
+    // flex-shrink: 1;
+    // justify-content: space-evenly;
+}
+// .Card.Title{
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     padding: 20px;
+// }
+// .Card{
+//     width: 200px;
+//     height: 400px;
+//     margin: 20px;
+// }
+.main-card-con{
+    padding: 20px;
+}

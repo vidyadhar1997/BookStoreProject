@@ -14,7 +14,6 @@ function App() {
             <Route path="/login" component={Login} exact={true} /> 
             <Route path="/signup" component={Registration} exact={true} />
             <Route path="/dashbord" component={Dashboard} exact={true} />
-            {/* <Route path="/register" component={Registration} exact={true} /> */}
         </Switch>
         </Router>
       </div>

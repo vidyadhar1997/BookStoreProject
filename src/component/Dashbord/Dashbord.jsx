@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { getAllBooks } from '../../services/bookServices';
 import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.css';
+import '../Dashbord/Dashbord.scss'
 
 
 export default function Dashboard() {
@@ -20,12 +21,21 @@ export default function Dashboard() {
     }, []);
 
     return (
-        <div>
+
+        <div className="bookContainer">
             {books.map((note, index) => {
                 return (
+                   <div className="main-card-con">  
                     <Card>
+                         <div className="cardContainer">
+                              
+                          <div>{note.bookName}</div>
 
-                    </Card>
+                          </div>
+                                            
+                      </Card>
+
+                    </div>
                 );
             })}
         </div>
