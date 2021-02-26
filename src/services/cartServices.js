@@ -1,0 +1,18 @@
+import axios from "axios";
+import cartApiConstant from "../apiConstants/cartApiConstant";
+
+  export function addToCart(productId) {
+    try {
+        const response = axios.post(process.env.REACT_APP_USER_URL+cartApiConstant.addToCart+productId,
+      {
+        headers: {
+            Authorization:localStorage.getItem('token')
+        }
+      }
+    );
+      return response;
+    }
+    catch (error) {
+      return error;
+    }
+  }

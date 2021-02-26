@@ -3,8 +3,26 @@ import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../Dashbord/DisplayBook.scss'
 import LetUsC from '../../assets/letUsC.jpg'
+import { addToCart } from '../../services/cartServices';
+import BookInformation from '../BookInformation/BookInformation';
 
 export default function DisplayBook(props) {
+    const [bookID,setid] =  React.useState('')
+    const addToBag = (note) => {
+        const productId=note._id
+        addToCart(productId).then((responce) => {
+            console.log("responce data==>", responce);
+            setid(note._id)
+
+        }).catch((error) => {
+            console.log("error is =", error);
+        })
+
+        // console.log("note",note)
+        // setid(note._id)
+        // console.log("book id",bookID)
+    
+    }
     return (
         <div className="DisplayBook" >
           <div className="BooksCount">
@@ -15,19 +33,20 @@ export default function DisplayBook(props) {
                     return (
                         <div className="main-card-con" key={index}>
                             <Card>
-
                                 <div className="cardContainer">
                                     <div className="bookImage">
                                         <img className="imgage" src={LetUsC} />
                                     </div>
                                     <div className="content">
                                         <div className="BookName">{note.bookName}</div>
+                                       <div className="BookDescription"><BookInformation description={note}/></div> 
                                         <div className="Author">{note.author}</div>
                                         <div className="rupees">Rs. {note.price} </div>
                                         <div className="Buttonss">
-                                            <button type="button" className="bagButton">ADD TO BAG</button>
-                                            <button type="button" className="wishlistButton">WISHLIST</button>
-                                        </div>
+                                            {console.log("note w",note._id,"bookID",bookID)}
+                                            {(note._id === bookID) ?<button type="button" className="addedToBag">ADDED TO BAG</button>:<button type="button" className="bagButton" onClick={()=>addToBag(note)}>ADD TO BAG</button>}
+                                            {(note._id != bookID)?<button type="button" className="wishlistButton">WISHLIST</button>:undefined}
+                                        </div> 
                                     </div>
                                 </div>
 

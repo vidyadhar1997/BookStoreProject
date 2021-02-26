@@ -31,7 +31,6 @@ export default function Home(){
 <div className="HomeContainessssr">
    
     <AppBar/>
-    
     <Col>
     <DisplayBook  item={books} GetData={getAllBooks}/>
     </Col>

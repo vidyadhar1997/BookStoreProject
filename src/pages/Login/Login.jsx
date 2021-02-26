@@ -61,8 +61,12 @@ export default function Login() {
                 password: password
             }
             login(loginData).then((responce) => {
-                if (responce.status === 200) {
-                    history.push('/dashbord');
+            
+                if (responce.status === 200) 
+                {
+                   const value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM4ZDllMzc1ODA5ZTAwMTVjYjlmZGYiLCJmdWxsTmFtZSI6IkRoaXJhaiIsImVtYWlsIjoidmlkeWFkaGFyaHVkZ2VAZ21haWwuY29tIiwiaWF0IjoxNjE0MzM4NTMyLCJleHAiOjE2MTQ0MjQ5MzJ9.3Rh8CFdD2ikezzsbduaealSGGpKsZEDueySCRZvr1Eg"
+                   window.localStorage.setItem('token',value)
+                    history.push('/home');
                 }
                 console.log("responce data==>", responce);
             }).catch((error) => {
