@@ -8,10 +8,12 @@ import BookInformation from '../BookInformation/BookInformation';
 const bookImageData = require('../../assets/bookImage.json')
 
 export default function DisplayBook(props) {
+    
     const [bookID,setid] =  React.useState('')
     const addToBag = (note) => {
         console.log("dhiraj")
         const productId=note._id
+
         addToCart(productId).then((responce) => {
             console.log("responce data==>", responce);
             setid(note._id)
@@ -45,11 +47,14 @@ export default function DisplayBook(props) {
                                        <div className="BookDescription"><BookInformation description={note}/></div> 
                                         <div className="Author">{note.author}</div>
                                         <div className="rupees">Rs. {note.price} </div>
+
                                         <div className="Buttonss">
                                             {console.log("note w",note._id,"bookID",bookID)}
                                             {(note._id === bookID) ?<button type="button" className="addedToBag">ADDED TO BAG</button>:<button type="button" className="bagButton" onClick={()=>addToBag(note)}>ADD TO BAG</button>}
                                             {(note._id != bookID)?<button type="button" className="wishlistButton">WISHLIST</button>:undefined}
                                         </div> 
+
+
                                     </div>
                                 </div>
 
