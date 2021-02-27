@@ -6,7 +6,7 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
         const response = axios.post(process.env.REACT_APP_USER_URL+cartApiConstant.addToCart+productId,
       {
         headers: {
-            Authorization:localStorage.getItem('token')
+           value:localStorage.getItem('token')
         }
       }
     );

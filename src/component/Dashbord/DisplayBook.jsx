@@ -5,6 +5,7 @@ import '../Dashbord/DisplayBook.scss'
 import LetUsC from '../../assets/letUsC.jpg'
 import { addToCart } from '../../services/cartServices';
 import BookInformation from '../BookInformation/BookInformation';
+const bookImageData = require('../../assets/bookImage.json')
 
 export default function DisplayBook(props) {
     const [bookID,setid] =  React.useState('')
@@ -17,12 +18,9 @@ export default function DisplayBook(props) {
         }).catch((error) => {
             console.log("error is =", error);
         })
+        console.log("id=",setid(note._id))
+        }
 
-        // console.log("note",note)
-        // setid(note._id)
-        // console.log("book id",bookID)
-    
-    }
     return (
         <div className="DisplayBook" >
           <div className="BooksCount">
@@ -35,7 +33,11 @@ export default function DisplayBook(props) {
                             <Card>
                                 <div className="cardContainer">
                                     <div className="bookImage">
-                                        <img className="imgage" src={LetUsC} />
+                                      {bookImageData.bookImage.map((book,index)=>{
+                                        return(book.id===note._id?
+                                      <img className="imgage" src={book.bookImage}/>
+                                      :null)
+                                    })}
                                     </div>
                                     <div className="content">
                                         <div className="BookName">{note.bookName}</div>
@@ -58,5 +60,4 @@ export default function DisplayBook(props) {
             </div>
         </div>
     )
-
 }
