@@ -1,0 +1,66 @@
+.cardsss {
+    width:60%;
+    height:auto;
+    margin-left: 20%;
+    padding: 20px;
+}
+
+.imgages{
+    width: 98px;
+    height: 107px;
+    margin-top: 10%;
+}
+
+.Content{
+    width: 67%;
+}
+
+.buttonsss{
+width: 48px;
+height: 30px;
+background-color: white;
+}
+
+.addedsToBag{
+    width: 214px;
+    background-color:blue;
+    border: none;
+    height: 33px;
+    font-size: 12px;
+    color: white;
+    margin-top: 20px;
+}
+
+.cardContainerss{
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.addedToBagss{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.rupeess{
+    font-weight: 700;
+    margin-top: 2%;
+    
+}
+.BookNames{
+    font-size: 20px;
+    font-weight: 600;
+}
+.Authors{
+    color:#BEBEBE;
+    font-size: 14px;
+    margin-top: 2%;
+
+}
+.Signsss{
+    display: flex;
+    justify-content: space-around;
+    width: 54%;
+    padding-top: 34px;
+}

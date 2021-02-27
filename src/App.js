@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router,  Route, Switch} from 'react-router-dom';
+import CartBooks from './component/CartBooks/CartBooks';
 import Dashboard from './component/Dashbord/DisplayBook';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
@@ -15,7 +16,7 @@ function App() {
         <Switch>
             <Route path="/login" component={Login} exact={true} /> 
             <Route path="/signup" component={Registration} exact={true} />
-            {/* <Route path="/dashbord" component={Dashboard} exact={true} /> */}
+            <Route path="/cartbooks" component={CartBooks} exact={true} /> 
             <Route path="/home" component={Home} exact={true} />
         </Switch>
         </Router>

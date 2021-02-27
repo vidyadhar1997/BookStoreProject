@@ -3,11 +3,11 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
 
   export function addToCart(productId) {
     try {
-        const response = axios.post(process.env.REACT_APP_USER_URL+cartApiConstant.addToCart+productId,
+        const response = axios.post(process.env.REACT_APP_USER_URL+cartApiConstant.addToCart+productId,null,
       {
         headers: {
-           value:localStorage.getItem('token')
-        }
+           'x-access-token':localStorage.getItem('token')
+        },
       }
     );
       return response;

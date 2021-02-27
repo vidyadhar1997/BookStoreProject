@@ -64,8 +64,9 @@ export default function Login() {
             
                 if (responce.status === 200) 
                 {
-                   const value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM4ZDllMzc1ODA5ZTAwMTVjYjlmZGYiLCJmdWxsTmFtZSI6IkRoaXJhaiIsImVtYWlsIjoidmlkeWFkaGFyaHVkZ2VAZ21haWwuY29tIiwiaWF0IjoxNjE0MzM4NTMyLCJleHAiOjE2MTQ0MjQ5MzJ9.3Rh8CFdD2ikezzsbduaealSGGpKsZEDueySCRZvr1Eg"
-                   window.localStorage.setItem('token',value)
+                   var value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDNhM2EwZDUxZmRjZTAwMTU2NmFmOWEiLCJmdWxsTmFtZSI6IlRyaW1iYWsiLCJlbWFpbCI6InRyaW1iYWtlc2h3YXIuMTk5NEBnbWFpbC5jb20iLCJpYXQiOjE2MTQ0Mjg2ODYsImV4cCI6MTYxNDUxNTA4Nn0.MaZydU10Iia3v9TxAWcv6v5YFg76Ohevrg6XxQ9OC_I"
+
+                    localStorage.setItem('token',value)
                     history.push('/home');
                 }
                 console.log("responce data==>", responce);
@@ -80,7 +81,7 @@ export default function Login() {
             <h4 className="header">
                 BookStore App
                 </h4>
-            <Card >
+            <Card>
                 <Card.Body>
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <h4 className="heading">Login</h4>

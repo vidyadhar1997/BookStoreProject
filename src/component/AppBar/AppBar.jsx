@@ -15,7 +15,7 @@ export default function AppBar() {
                     <div className="booksss">
                         <img className="booksImage" src={BookImage} />
                     </div>
-                    <Navbar.Brand  >Bookstore</Navbar.Brand>
+                    <Navbar.Brand>Bookstore</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Form >

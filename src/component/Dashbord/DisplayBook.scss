@@ -109,3 +109,10 @@
 .BookDescription{
     opacity: 0%;
 }
+
+
+@media screen and (max-width: 480px) {
+.BooksCount {
+    margin-top: 24%;
+}
+}

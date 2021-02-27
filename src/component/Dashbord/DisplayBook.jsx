@@ -10,6 +10,7 @@ const bookImageData = require('../../assets/bookImage.json')
 export default function DisplayBook(props) {
     const [bookID,setid] =  React.useState('')
     const addToBag = (note) => {
+        console.log("dhiraj")
         const productId=note._id
         addToCart(productId).then((responce) => {
             console.log("responce data==>", responce);
@@ -18,7 +19,7 @@ export default function DisplayBook(props) {
         }).catch((error) => {
             console.log("error is =", error);
         })
-        console.log("id=",setid(note._id))
+        //console.log("id",setid(note._id))
         }
 
     return (
