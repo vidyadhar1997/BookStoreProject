@@ -32,3 +32,19 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
         return error;
       }
   }
+
+  export function updateToCart(data) {
+    try {
+        const response = axios.put(process.env.REACT_APP_USER_URL+cartApiConstant.updatCart+data.product_id._id,data,
+      {
+        headers: {
+           'x-access-token':localStorage.getItem('token')
+        },
+      }
+    );
+      return response;
+    }
+    catch (error) {
+      return error;
+    }
+  }
