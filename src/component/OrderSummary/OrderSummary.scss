@@ -1,0 +1,54 @@
+.summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .ordersummaryimage {
+    display: flex;
+    justify-content: center;
+    padding-top: 4%;
+    width: 50%;
+  }
+  .summaryimage{
+    width:350px;
+  }
+  .Comfirmation {
+    max-width:250px;
+  text-align:center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 15px;
+  }
+  .flexSetting {
+    display: flex;
+    flex-direction:row;
+  }
+  .Columns{
+    width:30%;
+    display: flex;
+    flex-direction:column;
+    border: groove;
+    border-color: red($color: #ffffff);
+    border-width: 0.01px;
+  }
+  .headersss{
+   padding: 12px;
+    word-wrap: break-word !important;
+    border-top: groove;
+    border-color: red($color: #ffffff);
+    border-width: 0.1px;
+  }
+  .ContinueShopping{
+    width: 195px;
+    background-color:#3371B5;
+    border: none;
+    height: 33px;
+    font-size: 14px;
+    color: white;
+    margin-top: 10%;
+  }
+ 
+  
