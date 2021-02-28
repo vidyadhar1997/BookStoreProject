@@ -60,7 +60,6 @@ export default function CartBooks() {
                 product_id: cartbook.product_id,
                 quantityToBuy: cartbook.quantityToBuy--,
             }
-
             updateToCart(data).then((responce) => {
                 if (responce.status === 200) {
                     console.log("responce cart ", responce)
@@ -74,31 +73,29 @@ export default function CartBooks() {
         }
     }
 
-    const removeCartItem=(cartbook)=>{
-       const cartItem_id=cartbook._id
-       console.log("id===",cartItem_id)
-       removeFromCart(cartItem_id).then((responce)=>{
-        if (responce.status === 200) {
-            console.log("responce cart ", responce)
-        }
-       }).catch((error) => {
-        console.log("error is ", error)
-    });
-} 
+    const removeCartItem = (cartbook) => {
+        const cartItem_id = cartbook._id
+        console.log("id===", cartItem_id)
+        removeFromCart(cartItem_id).then((responce) => {
+            if (responce.status === 200) {
+                console.log("responce cart ", responce)
+            }
+        }).catch((error) => {
+            console.log("error is ", error)
+        });
+    }
 
     return (
 
         <div className="CartBookContainer">
             <AppBar />
-
-
             <Col className="Columnsssssssss">
                 <Card className="cardsssssssssss">
+                <div className="MyCart">My Cart ({cartbooks.length})</div>
                     {cartbooks.map((cartbook, index) => {
                         return (
 
                             <div className="cardContainerss">
-
                                 <div>
                                     {bookImageData.bookImage.map((book, index) => {
                                         return (book.id === cartbook.product_id._id ?
