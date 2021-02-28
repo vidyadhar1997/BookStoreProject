@@ -48,3 +48,19 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
       return error;
     }
   }
+
+  export function removeFromCart(cartItem_id) {
+    try {
+        const response = axios.delete(process.env.REACT_APP_USER_URL+cartApiConstant.RemoveFromCart+cartItem_id,
+      {
+        headers: {
+           'x-access-token':localStorage.getItem('token')
+        },
+      }
+    );
+      return response;
+    }
+    catch (error) {
+      return error;
+    }
+  }
