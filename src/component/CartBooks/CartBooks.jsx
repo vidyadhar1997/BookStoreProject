@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, Col, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import "../CartBooks/CartBooks.scss"
 import AppBar from '../AppBar/AppBar';
 import letUsCs from '../../assets/letUsC.jpg';
+import { getAllCartBooks } from '../../services/cartServices';
+const bookImageData = require('../../assets/bookImage.json')
 export default function CartBooks() {
 
     const [count, setCount] = React.useState(0);
@@ -13,24 +15,48 @@ export default function CartBooks() {
         setCard(!card)
     }
 
-    return (
-        <div className="CartBookContainer">
+    const [cartbooks, setCartBooks] = React.useState([]);
+    const getAllCartsBooks = () => {
+        getAllCartBooks().then((responce) => {
+            if (responce.status === 200) {
+                console.log("responce cart ", responce)
+                setCartBooks(responce.data.result)
+            }
+        }).catch((error) => {
+            console.log("error is ", error)
+        });
+    }
+    useEffect(() => {
+        getAllCartsBooks()
+        console.log("bookImageData",bookImageData)
+    }, []);
 
+
+    return (
+
+        <div className="CartBookContainer">
             <AppBar />
+
 
             <Col className="Columnsssssssss">
                 <Card className="cardsssssssssss">
-
-                    <div className="cardContainerss">
+                    { cartbooks.map((cartbook,index)=>{
+                        return(
+                       
+                            <div className="cardContainerss">
 
                         <div>
-                            <img className="imgages" src={letUsCs} />
+                        {bookImageData.bookImage.map((book,index)=>{
+                                        return(book.id===cartbook.product_id._id?
+                                      <img className="imgage" src={book.bookImage}/>
+                                      :null)
+                                    })}
                         </div>
 
                         <div className="Content">
-                            <div className="BookNames">Don't Make Me Think </div>
-                            <div className="Authors">by steve king </div>
-                            <div className="rupeess">Rs.1500 </div>
+                            <div className="BookNames">{cartbook.product_id.bookName}</div>
+                            <div className="Authors">{cartbook.product_id.author}</div>
+                            <div className="rupeess">{cartbook.product_id.price}</div>
 
                             <div className="Signsss">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16" onClick={() => setCount(count - 1)}>
@@ -46,10 +72,14 @@ export default function CartBooks() {
                     </div>
                         </div>
                     </div>
+                    )
+                    })}
                     <div className="addedToBagss">
                         {
                             !card ? <button type="button" className="addedsToBag" onClick={PlaceOrderDetails}>PLACE ORDER</button> : undefined}
                     </div>
+                  
+                  
                 </Card>
 
                 {!card ? <Card className="CardDetails">
@@ -58,22 +88,22 @@ export default function CartBooks() {
 
                         Customer Details
                             <div className="NamePhoneField">
-                            <Form.Control variant="outlined"  type="Name" className="inputField"  placeholder="Name"/>
-                            <Form.Control variant="outlined"  type="Phone number" className="inputField"  placeholder="Phone number"/>
-                            </div>
-                            <div className="NamePhoneField">
-                            <Form.Control variant="outlined"  type="Pincode" className="inputField"  placeholder="Pincode"/>
-                            <Form.Control variant="outlined"  type="Locality" className="inputField"  placeholder="Locality"/>
-                            </div>
-                            <div className="NamePhoneField">
-                            <Form.Control variant="outlined"  type="Address" className="inputFieldAddress" width="80%"  placeholder="Address"/>
-                            </div>
-                            <div className="NamePhoneField">
-                            <Form.Control variant="outlined"  type="City/town" className="inputField"  placeholder="City/town"/>
-                            <Form.Control variant="outlined"  type="LandMark" className="inputField"  placeholder="LandMark"/>
+                            <Form.Control variant="outlined" type="Name" className="inputField" placeholder="Name" />
+                            <Form.Control variant="outlined" type="Phone number" className="inputField" placeholder="Phone number" />
+                        </div>
+                        <div className="NamePhoneField">
+                            <Form.Control variant="outlined" type="Pincode" className="inputField" placeholder="Pincode" />
+                            <Form.Control variant="outlined" type="Locality" className="inputField" placeholder="Locality" />
+                        </div>
+                        <div className="NamePhoneField">
+                            <Form.Control variant="outlined" type="Address" className="inputFieldAddress" width="80%" placeholder="Address" />
+                        </div>
+                        <div className="NamePhoneField">
+                            <Form.Control variant="outlined" type="City/town" className="inputField" placeholder="City/town" />
+                            <Form.Control variant="outlined" type="LandMark" className="inputField" placeholder="LandMark" />
                         </div>
                         <div className="ContinueButtons">
-                        <button type="button" className="ContinueButton">Continue</button>
+                            <button type="button" className="ContinueButton">Continue</button>
                         </div>
 
                     </Card>}
@@ -82,6 +112,8 @@ export default function CartBooks() {
                     Order summery
             </Card>
             </Col>
+
+
         </div>
 
     )

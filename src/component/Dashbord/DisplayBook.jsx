@@ -21,7 +21,6 @@ export default function DisplayBook(props) {
         }).catch((error) => {
             console.log("error is =", error);
         })
-        //console.log("id",setid(note._id))
         }
 
     return (

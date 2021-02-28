@@ -67,6 +67,10 @@ export default function Login() {
                    var value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDNhM2EwZDUxZmRjZTAwMTU2NmFmOWEiLCJmdWxsTmFtZSI6IlRyaW1iYWsiLCJlbWFpbCI6InRyaW1iYWtlc2h3YXIuMTk5NEBnbWFpbC5jb20iLCJpYXQiOjE2MTQ0Mjg2ODYsImV4cCI6MTYxNDUxNTA4Nn0.MaZydU10Iia3v9TxAWcv6v5YFg76Ohevrg6XxQ9OC_I"
 
                     localStorage.setItem('token',value)
+                    // localStorage.setItem('userId',responce.data.userId)
+                    // localStorage.setItem('firstname',responce.data.firstName)
+                    // localStorage.setItem('lastname',responce.data.lastName)
+                    // localStorage.setItem('email',responce.data.data)
                     history.push('/home');
                 }
                 console.log("responce data==>", responce);

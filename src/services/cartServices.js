@@ -16,3 +16,19 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
       return error;
     }
   }
+
+  export function getAllCartBooks() {
+    try {
+      const response = axios.get(process.env.REACT_APP_USER_URL+cartApiConstant.getToCart,
+        {
+          headers: {
+             'x-access-token':localStorage.getItem('token')
+          },
+        }
+      );
+        return response;
+      }
+      catch (error) {
+        return error;
+      }
+  }
