@@ -64,3 +64,19 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
       return error;
     }
   }
+
+  export function EditCustomerDetails(CustomerDetails) {
+    try {
+        const response = axios.put(process.env.REACT_APP_USER_URL+cartApiConstant.EditDetails,CustomerDetails,
+      {
+        headers: {
+           'x-access-token':localStorage.getItem('token')
+        },
+      }
+    );
+      return response;
+    }
+    catch (error) {
+      return error;
+    }
+  }

@@ -3,8 +3,7 @@ import { Card, Col, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import "../CartBooks/CartBooks.scss"
 import AppBar from '../AppBar/AppBar';
-import letUsCs from '../../assets/letUsC.jpg';
-import { getAllCartBooks, removeFromCart, updateToCart } from '../../services/cartServices';
+import { EditCustomerDetails, getAllCartBooks, removeFromCart, updateToCart } from '../../services/cartServices';
 const bookImageData = require('../../assets/bookImage.json')
 
 export default function CartBooks() {
@@ -37,7 +36,7 @@ export default function CartBooks() {
         console.log("data=", cartbook)
         //,cartbook.product_id._id
         //setCount(count + 1)
-        
+
         if (isincrease) {
             const data = {
                 product_id: cartbook.product_id,
@@ -83,10 +82,68 @@ export default function CartBooks() {
         });
     }
 
-const[continues,setContinues]=React.useState(false)
-   const ContinueHandler=()=>{
-    setContinues(true)
-   }
+    const [continues, setContinues] = React.useState(false)
+    const ContinueHandler = () => {
+        setContinues(true)
+    }
+
+    const [name, setName] = React.useState('');
+    const nameHandler = (event) => {
+        setName(event.target.value)
+        console.log("name=", name)
+    }
+    const [number, numberHandler] = React.useState('');
+    const phoneNumberHandler = (event) => {
+        numberHandler(event.target.value)
+        console.log("phone number=", number)
+    }
+    const [pincode, setPincode] = React.useState('');
+    const pinCodeHandler = (event) => {
+        setPincode(event.target.value)
+        console.log("PinCode=", pincode)
+    }
+    const [locality, setLocality] = React.useState('');
+    const localityHandler = (event) => {
+        setLocality(event.target.value)
+        console.log("Locality=", locality)
+    }
+    const [address, setAddress] = React.useState('');
+    const addressHandler = (event) => {
+        setAddress(event.target.value)
+        console.log("Address=", address)
+    }
+    const [city, setCity] = React.useState('');
+    const cityHandler = (event) => {
+        setCity(event.target.value)
+        console.log("City=", city)
+    }
+
+    const [state, setState] = React.useState('');
+    const stateHandler = (event) => {
+        setState(event.target.value)
+        console.log("Landmark=", state)
+    }
+    const [addressType, setAddressType] = React.useState('');
+    const RadioHandler = (event) => {
+        setAddressType(event.target.value)
+        console.log("Radio Button=", addressType)  
+       }
+
+    const EditDetailsHandler = () => {
+        const CustomerDetails = {
+            addressType:addressType,
+            fullAddress: address,
+            city: city,
+            state: state
+        }
+        EditCustomerDetails(CustomerDetails).then((responce) => {
+            if (responce.status === 200) {
+                console.log("responce data==>", responce);
+            }
+        }).catch((error) => {
+            console.log("error is =", error);
+        })
+    }
 
     return (
 
@@ -137,61 +194,98 @@ const[continues,setContinues]=React.useState(false)
                             !card ? <button type="button" className="addedsToBag" onClick={PlaceOrderDetails}>PLACE ORDER</button> : undefined}
                     </div>
                 </Card>
- 
+
                 {!card ? <Card className="CardDetails">
                     <div>Customer Details</div>
                 </Card> : <Card className="CardDetailss">
 
                         <div className="customerHeading">Customer Details</div>
-                        {continues ? <div className="Edit">Edit</div>:undefined}
+                        {continues ? <div className="Edit" onClick={EditDetailsHandler}>Edit</div> : undefined}
                         <div className="NamePhoneField">
-                            <Form.Control variant="outlined" type="Name" className="inputField" placeholder="Name" />
-                            <Form.Control variant="outlined" type="Phone number" className="inputField" placeholder="Phone number" />
+                            <Form.Control variant="outlined" type="Name" className="inputField" placeholder="Name" onChange={nameHandler} />
+                            <Form.Control variant="outlined" type="Phone number" className="inputField" placeholder="Phone number" onChange={phoneNumberHandler} />
                         </div>
                         <div className="NamePhoneField">
-                            <Form.Control variant="outlined" type="Pincode" className="inputField" placeholder="Pincode" />
-                            <Form.Control variant="outlined" type="Locality" className="inputField" placeholder="Locality" />
+                            <Form.Control variant="outlined" type="Pincode" className="inputField" placeholder="Pincode" onChange={pinCodeHandler} />
+                            <Form.Control variant="outlined" type="Locality" className="inputField" placeholder="Locality" onChange={localityHandler} />
                         </div>
                         <div className="NamePhoneField">
-                            <Form.Control variant="outlined" type="Address" className="inputFieldAddress" width="80%" placeholder="Address" />
+                            <Form.Control variant="outlined" type="Address" className="inputFieldAddress" width="80%" placeholder="Address" onChange={addressHandler} />
                         </div>
                         <div className="NamePhoneField">
-                            <Form.Control variant="outlined" type="City/town" className="inputField" placeholder="City/town" />
-                            <Form.Control variant="outlined" type="LandMark" className="inputField" placeholder="LandMark" />
+                            <Form.Control variant="outlined" type="City/town" className="inputField" placeholder="City/town" onChange={cityHandler} />
+                            <Form.Control variant="outlined" type="LandMark" className="inputField" placeholder="state" onChange={stateHandler} />
+                        </div>
+
+                        <div className="RadioContainer">
+                            <div className="Type">Type</div>
+                            <div>
+                            <fieldset >
+                                <Form.Group onChange={RadioHandler}>
+                                    <Col sm={10}>
+                                        <Form.Check
+                                            type="radio"
+                                            label="Home"
+                                            inline
+                                            name="formHorizontalRadios"
+                                            id="formHorizontalRadios1"
+                                            value="Home"
+                                        />
+                                        <Form.Check
+                                            type="radio"
+                                            label="Office"
+                                            inline
+                                            name="formHorizontalRadios"
+                                            id="formHorizontalRadios2"
+                                            value="Office"
+                                        />
+                                        <Form.Check
+                                            type="radio"
+                                            label="Other"
+                                            inline
+                                            name="formHorizontalRadios"
+                                            id="formHorizontalRadios3"
+                                            value="Other"
+                                        />
+                                    </Col>
+                                </Form.Group>
+                            </fieldset>
+                            </div>
                         </div>
                         <div className="ContinueButtons">
-                        {!continues ?<button type="button" className="ContinueButton" onClick={ContinueHandler}>Continue</button>:undefined}
+                            {!continues ? <button type="button" className="ContinueButton" onClick={ContinueHandler}>Continue</button> : undefined}
                         </div>
+
                     </Card>}
-                    {!continues ? <Card className="CardDetails">
+                {!continues ? <Card className="CardDetails">
                     Order summery
-            </Card>:
+            </Card> :
                     <Card className="cardsssssssssss">
-                    <div className="OrderSummary">Order summery</div>
-                    {cartbooks.map((cartbook, index) => {
-                        return (
-                            <div className="cardOrderContainerss">
-                                <div>
-                                    {bookImageData.bookImage.map((book, index) => {
-                                        return (book.id === cartbook.product_id._id ?
-                                            <img className="imgage" src={book.bookImage} />
-                                            : null)
-                                    })}
+                        <div className="OrderSummary">Order summery</div>
+                        {cartbooks.map((cartbook, index) => {
+                            return (
+                                <div className="cardOrderContainerss">
+                                    <div>
+                                        {bookImageData.bookImage.map((book, index) => {
+                                            return (book.id === cartbook.product_id._id ?
+                                                <img className="imgage" src={book.bookImage} />
+                                                : null)
+                                        })}
+                                    </div>
+                                    <div className="Content">
+                                        <div className="BookNames">{cartbook.product_id.bookName}</div>
+                                        <div className="Authors">{cartbook.product_id.author}</div>
+                                        <div className="rupeess">{cartbook.product_id.price}</div>
+                                    </div>
                                 </div>
-                                <div className="Content">
-                                    <div className="BookNames">{cartbook.product_id.bookName}</div>
-                                    <div className="Authors">{cartbook.product_id.author}</div>
-                                    <div className="rupeess">{cartbook.product_id.price}</div>
-                                </div>
-                            </div>
-                            
-                        )
-                    })}
-                      <div className="addedToBagss">
-                      <button type="button" className="Checkout">CHECKOUT</button> 
-                    </div>
-                   
-            </Card>}
+
+                            )
+                        })}
+                        <div className="addedToBagss">
+                            <button type="button" className="Checkout">CHECKOUT</button>
+                        </div>
+
+                    </Card>}
             </Col>
 
 
