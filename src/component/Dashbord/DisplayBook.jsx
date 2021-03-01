@@ -13,9 +13,6 @@ export default function DisplayBook(props) {
 
     const [bookID, setid] = React.useState('')
 
-    const[currentPage,setCurrentpage]=React.useState(1)
-    const[postPerPage,setPostPerPage]=React.useState(3)
-    
     const addToBag = (note) => {
         console.log("dhiraj")
         const productId = note._id
