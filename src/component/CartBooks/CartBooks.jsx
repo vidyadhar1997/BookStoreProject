@@ -29,17 +29,15 @@ export default function CartBooks() {
     }
     useEffect(() => {
         getAllCartsBooks()
-        //console.log("bookImageData",bookImageData)
     }, []);
 
 
-    ///update cart
     const [cartId, setCartId] = React.useState('')
     const HandlePlusItem = (cartbook, isincrease) => {
         console.log("data=", cartbook)
         //,cartbook.product_id._id
         //setCount(count + 1)
-        const data = {}
+        
         if (isincrease) {
             const data = {
                 product_id: cartbook.product_id,
@@ -85,13 +83,18 @@ export default function CartBooks() {
         });
     }
 
+const[continues,setContinues]=React.useState(false)
+   const ContinueHandler=()=>{
+    setContinues(true)
+   }
+
     return (
 
         <div className="CartBookContainer">
             <AppBar />
             <Col className="Columnsssssssss">
                 <Card className="cardsssssssssss">
-                <div className="MyCart">My Cart ({cartbooks.length})</div>
+                    <div className="MyCart">My Cart ({cartbooks.length})</div>
                     {cartbooks.map((cartbook, index) => {
                         return (
 
@@ -134,12 +137,13 @@ export default function CartBooks() {
                             !card ? <button type="button" className="addedsToBag" onClick={PlaceOrderDetails}>PLACE ORDER</button> : undefined}
                     </div>
                 </Card>
-
+ 
                 {!card ? <Card className="CardDetails">
                     <div>Customer Details</div>
                 </Card> : <Card className="CardDetailss">
 
                         <div className="customerHeading">Customer Details</div>
+                        {continues ? <div className="Edit">Edit</div>:undefined}
                         <div className="NamePhoneField">
                             <Form.Control variant="outlined" type="Name" className="inputField" placeholder="Name" />
                             <Form.Control variant="outlined" type="Phone number" className="inputField" placeholder="Phone number" />
@@ -156,14 +160,38 @@ export default function CartBooks() {
                             <Form.Control variant="outlined" type="LandMark" className="inputField" placeholder="LandMark" />
                         </div>
                         <div className="ContinueButtons">
-                            <button type="button" className="ContinueButton">Continue</button>
+                        {!continues ?<button type="button" className="ContinueButton" onClick={ContinueHandler}>Continue</button>:undefined}
                         </div>
-
                     </Card>}
-
-                <Card className="CardDetails">
+                    {!continues ? <Card className="CardDetails">
                     Order summery
-            </Card>
+            </Card>:
+                    <Card className="cardsssssssssss">
+                    <div className="OrderSummary">Order summery</div>
+                    {cartbooks.map((cartbook, index) => {
+                        return (
+                            <div className="cardOrderContainerss">
+                                <div>
+                                    {bookImageData.bookImage.map((book, index) => {
+                                        return (book.id === cartbook.product_id._id ?
+                                            <img className="imgage" src={book.bookImage} />
+                                            : null)
+                                    })}
+                                </div>
+                                <div className="Content">
+                                    <div className="BookNames">{cartbook.product_id.bookName}</div>
+                                    <div className="Authors">{cartbook.product_id.author}</div>
+                                    <div className="rupeess">{cartbook.product_id.price}</div>
+                                </div>
+                            </div>
+                            
+                        )
+                    })}
+                      <div className="addedToBagss">
+                      <button type="button" className="Checkout">CHECKOUT</button> 
+                    </div>
+                   
+            </Card>}
             </Col>
 
 

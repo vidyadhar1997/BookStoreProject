@@ -1,19 +1,22 @@
 .cardsssssssssss{
-    // width:60%;
-    // height:auto;
-    // margin-left: 20%;
-    // padding: 20px;
-
     width: 150%;
     height: auto;
-    // margin-left: 20%;
     padding: 20px;
     margin-top: 87px;
 }
+
 .Columnsssssssss{
     margin-left: -43%;
 }
 
+.Edit{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: -19px;
+    padding-left: 4px;
+    margin-right: 2%;
+}
 
 .imgages{
     width: 98px;
@@ -24,11 +27,11 @@
 .Content{
     width: 67%;
 }
+
 .CartBookContainer{
     width: 100%;
     padding-bottom: 9%;
 }
-
 
 .buttonsss{
 width: 48px;
@@ -51,6 +54,7 @@ background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
 }
 .addedToBagss{
     display: flex;
@@ -91,6 +95,15 @@ background-color: white;
     padding: 2%;
     padding-top: 3%;
 }
+.OrderDetails{
+    width: 150%;
+    height: auto;
+    margin-top: 5%;
+    display: flex;
+    padding: 2%;
+    padding-top: 3%;
+}
+
 .CardDetailss{
     width: 150%;
     height: auto;
@@ -128,4 +141,26 @@ padding: 19px;
     padding: 2%;
     font-size: larger;
     font-weight: 500;
+}
+.Checkout{
+    width: 140px;
+    background-color:#3371B5;
+    border: none;
+    height: 33px;
+    font-size: 12px;
+    color: white;
+    margin-top: 20px;
+}
+.OrderSummary{
+    padding: 2%;
+    font-size: 20px;
+    font-weight: 500;
+   color:  #908F8F;
+}
+.cardOrderContainerss{
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
 }
