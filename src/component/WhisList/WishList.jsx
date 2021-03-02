@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { getAllWishListBooks } from "../../services/wishListServices";
+import { getAllWishListBooks, removeFromWishList } from "../../services/wishListServices";
 import Card from 'react-bootstrap/Card'
-import BookInformation from '../BookInformation/BookInformation';
 import "../Dashbord/DisplayBook.scss"
 import AppBar from '../AppBar/AppBar';
 import { Col } from 'react-bootstrap';
 const bookImageData = require('../../assets/bookImage.json')
-import Dropdown from 'react-bootstrap/Dropdown'
-import { DropdownButton } from 'react-bootstrap';
-
 import { addToCart } from '../../services/cartServices';
 
 export default function WishList(){
@@ -30,7 +26,6 @@ export default function WishList(){
     const addToBag = (note) => {
         console.log("dhiraj")
         const productId = note.product_id._id
-
         addToCart(productId).then((responce) => {
             console.log("responce data==>", responce);
             setid(note.product_id._id)
@@ -44,8 +39,18 @@ export default function WishList(){
         getAllWishListBook()
     }, []);
 
-    const RemoveBook=()=>{
-
+   
+    const removeBook=(cartbook)=>{
+        const cartItem_id = cartbook.product_id._id
+        console.log("id===", cartItem_id)
+        removeFromWishList (cartItem_id).then((responce) => {
+            if (responce.status === 200) {
+               getAllWishListBook()
+             console.log("responce wishlist ", responce)
+            }
+        }).catch((error) => {
+            console.log("error is ", error)
+        });
     }
 
     return (
@@ -79,7 +84,7 @@ export default function WishList(){
                                         <div className="Buttonss">
                                             {console.log("note w", note._id, "bookID", bookID)}
                                             {(note._id === bookID) ? <button type="button" className="addedToBag">ADDED TO BAG</button> : <button type="button" className="bagButton" onClick={() => addToBag(note)}>ADD TO BAG</button>}
-                                            {(note._id != bookID) ? <button type="button" className="wishlistButton" onClick={() => RemoveBook(note)}>Remove</button> : undefined}
+                                            {(note._id != bookID) ? <button type="button" className="wishlistButton" onClick={() => removeBook(note)}>Remove</button> : undefined}
                                         </div>
 
 

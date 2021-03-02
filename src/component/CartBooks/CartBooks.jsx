@@ -156,7 +156,7 @@ export default function CartBooks() {
                " product_quantity": parseInt(order.quantityToBuy),
                 "product_price": parseInt(order.product_id.price)
             }]}
-            OrderBookDetails(orders).then((responce) => {
+            OrderBookDetails(req).then((responce) => {
                 if (responce.status === 200) {
                     history.push('/ordersummary');
                     console.log("responce data==>", responce);
