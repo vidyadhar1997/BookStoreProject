@@ -7,8 +7,9 @@ import "../AppBar/AppBar.scss"
 import BookImage from '../../assets/bookLogo.svg'
 import CartImage from '../../assets/cart3.svg'
 import { useHistory } from 'react-router-dom';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-export default function AppBar() {
+export default function AppBar(props) {
 
     const history = useHistory();
     const handleCart = () => {
@@ -18,6 +19,7 @@ export default function AppBar() {
     const searchDAta = (e) => {
         console.log("e", e.target.value)
         setSearchD(e.target.value)
+        props.onSelectSearch(e.target.value)
     }
 
     const handleWhishList=()=>{

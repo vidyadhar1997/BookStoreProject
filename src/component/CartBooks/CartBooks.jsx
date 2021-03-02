@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import "../CartBooks/CartBooks.scss"
 import AppBar from '../AppBar/AppBar';
 import { EditCustomerDetails, getAllCartBooks, removeFromCart, updateToCart, OrderBookDetails } from '../../services/cartServices';
+import { useHistory } from 'react-router-dom';
 const bookImageData = require('../../assets/bookImage.json')
 
 export default function CartBooks() {
@@ -143,13 +144,14 @@ export default function CartBooks() {
         })
     }
 
+    const history = useHistory();
     const checkoutHandler = () => {
         cartbooks.map((order, index) => {
             console.log("product_id._id", order.product_id._id)
             console.log("product_id.bookName", order.product_id.bookName)
             console.log("product_id.quantity", order.quantityToBuy)
             console.log("product_id.price", order.product_id.price)
-           setTimeout(()=>{
+          
             const req ={ "orders" : [ {
                 "product_id": order.product_id._id.toString(),
                 "product_name": order.product_id.bookName.toString(),
@@ -160,16 +162,16 @@ export default function CartBooks() {
                 if (responce.status === 200) {
                     history.push('/ordersummary');
                     console.log("responce data==>", responce);
+                    removeCartItem(order)
                 }
             }).catch((error) => {
                 console.log("error is =", error);
             })
-        },5000)
+        
         })
     }
 
     return (
-
         <div className="CartBookContainer">
             <AppBar />
             <Col className="Columnsssssssss">

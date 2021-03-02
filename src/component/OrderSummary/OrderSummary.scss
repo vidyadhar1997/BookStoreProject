@@ -50,5 +50,15 @@
     color: white;
     margin-top: 10%;
   }
- 
-  
+
+  @media screen and (max-width: 480px) {
+.ordersummaryimage {
+  width: 94%;
+  margin-top: 7%;
+}
+
+.table {
+   padding-left: 11%;
+  padding-right: 2%;
+ }
+}

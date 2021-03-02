@@ -11,7 +11,7 @@ import { DropdownButton } from 'react-bootstrap';
 import { addToWhislist } from '../../services/wishListServices';
 
 export default function DisplayBook(props) {
-
+    const [iswishlist,setiswishlist] = React.useState(false)
     const [bookID, setid] = React.useState('')
     const [isAddedToBag,setisAddedToBag] = React.useState(true)
     const addToBag = (note) => {
@@ -21,17 +21,19 @@ export default function DisplayBook(props) {
         addToCart(productId).then((responce) => {
             console.log("responce data==>", responce);
             setid(note._id)
+            setiswishlist(false)
 
         }).catch((error) => {
             console.log("error is =", error);
         })
     }
-
+   
     const addToWhislists = (note) => {
         console.log("dhirajssssssss")
         const productId = note._id
         addToWhislist(productId).then((responce) => {
             console.log("responce data==>", responce);
+            setiswishlist(true)
             setid(note._id)
         setisAddedToBag(false)
         }).catch((error) => {
@@ -40,21 +42,14 @@ export default function DisplayBook(props) {
     }
     const [isLowTOHigh,setisLowTOHigh] = React.useState(false)
     const [isNoteSort,setisNoteSort] = React.useState(false)
-   const sortByPriceAsc=()=> {
-   
+    const sortByPriceAsc=()=> {
     setisNoteSort(true)
     setisLowTOHigh(true)
-    //     this.setState(prevState => {
-    //       this.state.products.sort((a, b) => (a.price - b.price))
-    //   });
-      }
+    }
 
      const sortByPriceDesc=()=> {
         setisNoteSort(true)
         setisLowTOHigh(false)
-    //     this.setState(prevState => {
-    //       this.state.products.sort((a, b) => (b.price - a.price))
-    //   });
       }
     return (
         <div className="DisplayBook" >
@@ -69,7 +64,7 @@ export default function DisplayBook(props) {
             </div>
             <div className="bookContainer">
 
-                {(isNoteSort?(isLowTOHigh?(props.item.sort((a, b) => a.price > b.price ? 1 : -1)):(props.item.sort((a, b) => a.price < b.price ? 1 : -1))):props.item).map((note, index) => {
+                {(isNoteSort?(isLowTOHigh?(props.item.sort((a, b) => a.price > b.price ? 1 : -1)):(props.item.sort((a, b) => a.price < b.price ? 1 : -1))):props.item.filter((i) => i.bookName.includes(props.searchData.toString()))).map((note, index) => {
                     return (
                         <div className="main-card-con" key={index}>
                             <Card>
@@ -89,7 +84,7 @@ export default function DisplayBook(props) {
 
                                         <div className="Buttonss">
                                             {console.log("note w", note._id, "bookID", bookID)}
-                                            {(note._id === bookID) ? <button type="button" className="addedToBag">ADDED TO BAG</button> : <button type="button" className="bagButton" onClick={() => addToBag(note)}>ADD TO BAG</button>}
+                                            {(note._id === bookID) ? !iswishlist?<button type="button" className="addedToBag">ADDED TO BAG</button>:<button type="button" className="addedToWishlist">ADDED TO WISHLIST</button> : <button type="button" className="bagButton" onClick={() => addToBag(note)}>ADD TO BAG</button>}
                                             {(note._id != bookID) ? <button type="button" className="wishlistButton" onClick={() => addToWhislists(note)}>WISHLIST</button> : undefined}
                                         </div>
 

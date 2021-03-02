@@ -32,16 +32,23 @@ export default function Home(){
     useEffect(() => {
         getAllBook()
     }, []);
-
+    const [searchData,setsearchData] = React.useState('')
+    const handleSelect =(sd)=>{
+        setsearchData(sd);
+        console.log("pp ",searchData)
+      
+        
+    }
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const currentPosts= books.slice(indexOfFirstPost,indexOfLastPost);
 
     return(
 <div className="HomeContainessssr">  
-    <AppBar />
+    <AppBar onSelectSearch={handleSelect}/>
+    {console.log("parent ",handleSelect)}
     <Col className="stylehome">
-    <DisplayBook  item={currentPosts} GetData={getAllBooks}/>
+    <DisplayBook searchData={searchData}  item={currentPosts} GetData={getAllBooks}/>
     <Paginations  postPerPage={postPerPage}  totalPosts={bookLength} pageinateNumber={pageinates}  />
     </Col>
 </div>

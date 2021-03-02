@@ -29,7 +29,8 @@ export default function WishList(){
         addToCart(productId).then((responce) => {
             console.log("responce data==>", responce);
             setid(note.product_id._id)
-
+            removeBook(note);
+            getAllWishListBook()
         }).catch((error) => {
             console.log("error is =", error);
         })
@@ -54,15 +55,15 @@ export default function WishList(){
     }
 
     return (
-        <div className="HomeContainessssr">
+        <div>
     <AppBar/>
     <Col className="stylehome">
         <div >
-            <div className="BooksCount">
+            <div className="BooksCounts">
                 <h3> Books({WhisListbooks.length})</h3>
             
             </div>
-            <div className="bookContainer">
+            <div className="bookContainers">
                 {WhisListbooks.map((note, index) => {
                     return (
                         <div className="main-card-con" key={index}>

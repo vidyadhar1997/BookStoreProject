@@ -9,6 +9,15 @@
     //padding-top: 57px;
     
 }
+.bookContainers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding-left: 4%;
+
+}
 .cardContainer{
     width: 245px;
     height: 330px;
@@ -111,13 +120,18 @@
     font-size: 12px;
     color: white;
 }
+.addedToWishlist{
+    width: 214px;
+    background-color:white;
+    height: 33px;
+    font-size: 12px;
+    color: black;
+}
 .Dropdawnfiled{
     display: flex;
     justify-content: flex-end;
 
 }
-
-
 button.dropdown-toggle.btn.btn-primary {
     width: 161px;
     height: 32px;
@@ -138,13 +152,19 @@ button.dropdown-toggle.btn.btn-primary {
 .BookDescription{
     opacity: 0%;
 }
-
+.BooksCounts{
+    margin-top: 10%;
+    margin-left: 15%;
+    }
 
 @media screen and (max-width: 480px) {
 
 .BooksCount {
     margin-top: 25%;
     margin-left: 24%;
+}
+.BooksCounts {
+    margin-top: 22%;
 }
 .bookContainer {
     margin-left: 10%;
@@ -164,5 +184,4 @@ input.mr-sm-2.form-control{
 width: -3%;
     margin-left: -242%;
 }
-
 }
