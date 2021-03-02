@@ -55,7 +55,6 @@ export default function WishList(){
 
     return (
         <div className="HomeContainessssr">
-   
     <AppBar/>
     <Col className="stylehome">
         <div >
