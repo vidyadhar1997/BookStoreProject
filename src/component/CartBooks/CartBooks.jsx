@@ -150,12 +150,12 @@ export default function CartBooks() {
             console.log("product_id.quantity", order.quantityToBuy)
             console.log("product_id.price", order.product_id.price)
            setTimeout(()=>{
-            const orders = [ {
-                product_id: order.product_id._id,
-                product_name: order.product_id.bookName,
-                product_quantity: parseInt(order.quantityToBuy),
-                product_price: parseInt(order.product_id.price)
-            }]
+            const req ={ "orders" : [ {
+                "product_id": order.product_id._id.toString(),
+                "product_name": order.product_id.bookName.toString(),
+               " product_quantity": parseInt(order.quantityToBuy),
+                "product_price": parseInt(order.product_id.price)
+            }]}
             OrderBookDetails(orders).then((responce) => {
                 if (responce.status === 200) {
                     history.push('/ordersummary');

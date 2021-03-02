@@ -33,7 +33,6 @@ export default function DisplayBook(props) {
         addToWhislist(productId).then((responce) => {
             console.log("responce data==>", responce);
             setid(note._id)
-
 setisAddedToBag(false)
         }).catch((error) => {
             console.log("error is =", error);
