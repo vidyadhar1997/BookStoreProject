@@ -8,11 +8,12 @@ import BookInformation from '../BookInformation/BookInformation';
 const bookImageData = require('../../assets/bookImage.json')
 import Dropdown from 'react-bootstrap/Dropdown'
 import { DropdownButton } from 'react-bootstrap';
+import { addToWhislist } from '../../services/wishListServices';
 
 export default function DisplayBook(props) {
 
     const [bookID, setid] = React.useState('')
-
+    const [isAddedToBag,setisAddedToBag] = React.useState(true)
     const addToBag = (note) => {
         console.log("dhiraj")
         const productId = note._id
@@ -26,15 +27,28 @@ export default function DisplayBook(props) {
         })
     }
 
+    const addToWhislists = (note) => {
+        console.log("dhirajssssssss")
+        const productId = note._id
+        addToWhislist(productId).then((responce) => {
+            console.log("responce data==>", responce);
+            setid(note._id)
+
+setisAddedToBag(false)
+        }).catch((error) => {
+            console.log("error is =", error);
+        })
+    }
+
     return (
         <div className="DisplayBook" >
             <div className="BooksCount">
                 <h3> Books({props.item.length})</h3>
                 <div className="Dropdawnfiledss">
-                <DropdownButton className="drop" title="Dropdown button">
-                    <Dropdown.Item href="#/action-1">Price:Low to High </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Price:High to Low</Dropdown.Item>
-                </DropdownButton>
+                    <DropdownButton className="drop" title="Dropdown button">
+                        <Dropdown.Item href="#/action-1">Price:Low to High </Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Price:High to Low</Dropdown.Item>
+                    </DropdownButton>
                 </div>
             </div>
             <div className="bookContainer">
@@ -59,7 +73,7 @@ export default function DisplayBook(props) {
                                         <div className="Buttonss">
                                             {console.log("note w", note._id, "bookID", bookID)}
                                             {(note._id === bookID) ? <button type="button" className="addedToBag">ADDED TO BAG</button> : <button type="button" className="bagButton" onClick={() => addToBag(note)}>ADD TO BAG</button>}
-                                            {(note._id != bookID) ? <button type="button" className="wishlistButton">WISHLIST</button> : undefined}
+                                            {(note._id != bookID) ? <button type="button" className="wishlistButton" onClick={() => addToWhislists(note)}>WISHLIST</button> : undefined}
                                         </div>
 
 
