@@ -3,6 +3,7 @@ import {BrowserRouter as Router,  Route, Switch} from 'react-router-dom';
 import CartBooks from './component/CartBooks/CartBooks';
 import Dashboard from './component/Dashbord/DisplayBook';
 import OrderSummary from './component/OrderSummary/OrderSummary';
+import WishList from './component/WhisList/WishList';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Registration from './pages/Registration/Registration';
@@ -20,6 +21,7 @@ function App() {
             <Route path="/cartbooks" component={CartBooks} exact={true} /> 
             <Route path="/home" component={Home} exact={true} />
             <Route path="/ordersummary" component={OrderSummary} exact={true} />
+            <Route path="/wishlist" component={WishList} exact={true} />
         </Switch>
         </Router>
       </div>

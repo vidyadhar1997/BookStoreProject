@@ -80,9 +80,9 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
       return error;
     }
   }
-    export function OrderBookDetails(UserOrderDetails) {
+    export function OrderBookDetails(orders) {
       try {
-          const response = axios.post(process.env.REACT_APP_USER_URL+cartApiConstant.OrderDetails,UserOrderDetails,
+          const response = axios.post(process.env.REACT_APP_USER_URL+cartApiConstant.OrderDetails,orders,
         {
           headers: {
              'x-access-token':localStorage.getItem('token')

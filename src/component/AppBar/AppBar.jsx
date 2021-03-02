@@ -7,12 +7,18 @@ import "../AppBar/AppBar.scss"
 import BookImage from '../../assets/bookLogo.svg'
 import CartImage from '../../assets/cart3.svg'
 import { useHistory } from 'react-router-dom';
+import Home from '../../pages/Home/Home';
 
 export default function AppBar() {
 
     const history = useHistory();
     const handleCart=()=>{
         history.push('/cartbooks');
+    }
+    const [searchD,setSearchD] = React.useState('')
+    const searchDAta=(e)=>{
+        console.log("e",e.target.value)
+        setSearchD(e.target.value)
     }
     return (
         <div className="AppBar">
@@ -25,7 +31,7 @@ export default function AppBar() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Form >
-                            <FormControl className="searchstyle" type="text" placeholder="Search" className="mr-sm-2" />
+                            <FormControl className="searchstyle" type="text" placeholder="Search" className="mr-sm-2" onChange={searchDAta} />
                         </Form>
                     </Navbar.Collapse>
                     <div className="cartContainer">
@@ -38,6 +44,7 @@ export default function AppBar() {
                     </div>
                 </div>
             </Navbar>
+          
         </div>
     )
 }

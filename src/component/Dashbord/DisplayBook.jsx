@@ -39,20 +39,38 @@ setisAddedToBag(false)
             console.log("error is =", error);
         })
     }
+    const [isLowTOHigh,setisLowTOHigh] = React.useState(false)
+    const [isNoteSort,setisNoteSort] = React.useState(false)
+   const sortByPriceAsc=()=> {
+   
+    setisNoteSort(true)
+    setisLowTOHigh(true)
+    //     this.setState(prevState => {
+    //       this.state.products.sort((a, b) => (a.price - b.price))
+    //   });
+      }
 
+     const sortByPriceDesc=()=> {
+        setisNoteSort(true)
+        setisLowTOHigh(false)
+    //     this.setState(prevState => {
+    //       this.state.products.sort((a, b) => (b.price - a.price))
+    //   });
+      }
     return (
         <div className="DisplayBook" >
             <div className="BooksCount">
                 <h3> Books({props.item.length})</h3>
                 <div className="Dropdawnfiledss">
                     <DropdownButton className="drop" title="Dropdown button">
-                        <Dropdown.Item href="#/action-1">Price:Low to High </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Price:High to Low</Dropdown.Item>
+                        <Dropdown.Item href="#/action-1" onClick={sortByPriceAsc}>Price:Low to High </Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" onClick={sortByPriceDesc}>Price:High to Low</Dropdown.Item>
                     </DropdownButton>
                 </div>
             </div>
             <div className="bookContainer">
-                {props.item.map((note, index) => {
+
+                {(isNoteSort?(isLowTOHigh?(props.item.sort((a, b) => a.price > b.price ? 1 : -1)):(props.item.sort((a, b) => a.price < b.price ? 1 : -1))):props.item).map((note, index) => {
                     return (
                         <div className="main-card-con" key={index}>
                             <Card>

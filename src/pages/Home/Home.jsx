@@ -38,9 +38,8 @@ export default function Home(){
     const currentPosts= books.slice(indexOfFirstPost,indexOfLastPost);
 
     return(
-<div className="HomeContainessssr">
-   
-    <AppBar/>
+<div className="HomeContainessssr">  
+    <AppBar />
     <Col className="stylehome">
     <DisplayBook  item={currentPosts} GetData={getAllBooks}/>
     <Paginations  postPerPage={postPerPage}  totalPosts={bookLength} pageinateNumber={pageinates}  />
