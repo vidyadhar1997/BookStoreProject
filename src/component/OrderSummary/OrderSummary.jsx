@@ -2,8 +2,14 @@ import React from 'react';
 import '../OrderSummary/OrderSummary.scss'
 import CheckoutImage from "../../assets/orderSummaryimg.jpg"
 import AppBar from '../AppBar/AppBar';
+import { useHistory } from 'react-router-dom';
 
 export default function OrderSummary() {
+
+    const historys = useHistory();
+    const shoppingHandler=()=>{
+        historys.push('/home');
+    }
     return (
         <div>
         <AppBar/>
@@ -52,7 +58,7 @@ export default function OrderSummary() {
 
                 <div >
 
-                    <button type="button" className="ContinueShopping">CONTINUE SHOPPING</button>
+                    <button type="button" className="ContinueShopping" onClick={shoppingHandler}>CONTINUE SHOPPING</button>
                 </div>
             </div>
             <br />

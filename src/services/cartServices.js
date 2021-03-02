@@ -33,9 +33,9 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
       }
   }
 
-  export function updateToCart(data) {
+  export function updateToCart(_id,data) {
     try {
-        const response = axios.put(process.env.REACT_APP_USER_URL+cartApiConstant.updatCart+data.product_id._id,data,
+        const response = axios.put(process.env.REACT_APP_USER_URL+cartApiConstant.updatCart+_id,data,
       {
         headers: {
            'x-access-token':localStorage.getItem('token')
@@ -80,3 +80,18 @@ import cartApiConstant from "../apiConstants/cartApiConstant";
       return error;
     }
   }
+    export function OrderBookDetails(UserOrderDetails) {
+      try {
+          const response = axios.post(process.env.REACT_APP_USER_URL+cartApiConstant.OrderDetails,UserOrderDetails,
+        {
+          headers: {
+             'x-access-token':localStorage.getItem('token')
+          },
+        }
+      );
+        return response;
+      }
+      catch (error) {
+        return error;
+      }
+    }

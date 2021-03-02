@@ -3,7 +3,7 @@ import { Card, Col, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import "../CartBooks/CartBooks.scss"
 import AppBar from '../AppBar/AppBar';
-import { EditCustomerDetails, getAllCartBooks, removeFromCart, updateToCart } from '../../services/cartServices';
+import { EditCustomerDetails, getAllCartBooks, removeFromCart, updateToCart, OrderBookDetails } from '../../services/cartServices';
 const bookImageData = require('../../assets/bookImage.json')
 
 export default function CartBooks() {
@@ -34,17 +34,14 @@ export default function CartBooks() {
     const [cartId, setCartId] = React.useState('')
     const HandlePlusItem = (cartbook, isincrease) => {
         console.log("data=", cartbook)
-        //,cartbook.product_id._id
-        //setCount(count + 1)
-
         if (isincrease) {
             const data = {
-                product_id: cartbook.product_id,
-                quantityToBuy: cartbook.quantityToBuy++,
+                quantityToBuy: cartbook.quantityToBuy + 1,
             }
 
-            updateToCart(data).then((responce) => {
+            updateToCart(cartbook._id, data).then((responce) => {
                 if (responce.status === 200) {
+                    getAllCartsBooks()
                     console.log("responce cart ", responce)
                     setCartId(cartbook.product_id)
                     setCount(cartbook.quantityToBuy)
@@ -59,6 +56,7 @@ export default function CartBooks() {
             }
             updateToCart(data).then((responce) => {
                 if (responce.status === 200) {
+                    getAllCartsBooks()
                     console.log("responce cart ", responce)
                     setCartId(cartbook.product_id)
                     setCount(cartbook.quantityToBuy)
@@ -66,7 +64,6 @@ export default function CartBooks() {
             }).catch((error) => {
                 console.log("error is ", error)
             });
-
         }
     }
 
@@ -75,6 +72,7 @@ export default function CartBooks() {
         console.log("id===", cartItem_id)
         removeFromCart(cartItem_id).then((responce) => {
             if (responce.status === 200) {
+                getAllCartsBooks()
                 console.log("responce cart ", responce)
             }
         }).catch((error) => {
@@ -126,12 +124,12 @@ export default function CartBooks() {
     const [addressType, setAddressType] = React.useState('');
     const RadioHandler = (event) => {
         setAddressType(event.target.value)
-        console.log("Radio Button=", addressType)  
-       }
+        console.log("Radio Button=", addressType)
+    }
 
     const EditDetailsHandler = () => {
         const CustomerDetails = {
-            addressType:addressType,
+            addressType: addressType,
             fullAddress: address,
             city: city,
             state: state
@@ -142,6 +140,29 @@ export default function CartBooks() {
             }
         }).catch((error) => {
             console.log("error is =", error);
+        })
+    }
+
+    const checkoutHandler = () => {
+        cartbooks.map((order, index) => {
+            console.log("product_id._id", order.product_id._id)
+            console.log("product_id.bookName", order.product_id.bookName)
+            console.log("product_id.quantity", order.quantityToBuy)
+            console.log("product_id.price", order.product_id.price)
+            // const UserOrderDetails = {
+            //     product_id: order.product_id._id,
+            //     product_name: order.product_id.bookName,
+            //     product_quantity: order.quantityToBuy,
+            //     product_price: order.product_id.price
+            // }
+            // OrderBookDetails(UserOrderDetails).then((responce) => {
+            //     if (responce.status === 200) {
+            //         history.push('/ordersummary');
+            //         console.log("responce data==>", responce);
+            //     }
+            // }).catch((error) => {
+            //     console.log("error is =", error);
+            // })
         })
     }
 
@@ -220,36 +241,36 @@ export default function CartBooks() {
                         <div className="RadioContainer">
                             <div className="Type">Type</div>
                             <div>
-                            <fieldset >
-                                <Form.Group onChange={RadioHandler}>
-                                    <Col sm={10}>
-                                        <Form.Check
-                                            type="radio"
-                                            label="Home"
-                                            inline
-                                            name="formHorizontalRadios"
-                                            id="formHorizontalRadios1"
-                                            value="Home"
-                                        />
-                                        <Form.Check
-                                            type="radio"
-                                            label="Office"
-                                            inline
-                                            name="formHorizontalRadios"
-                                            id="formHorizontalRadios2"
-                                            value="Office"
-                                        />
-                                        <Form.Check
-                                            type="radio"
-                                            label="Other"
-                                            inline
-                                            name="formHorizontalRadios"
-                                            id="formHorizontalRadios3"
-                                            value="Other"
-                                        />
-                                    </Col>
-                                </Form.Group>
-                            </fieldset>
+                                <fieldset >
+                                    <Form.Group onChange={RadioHandler}>
+                                        <Col sm={10}>
+                                            <Form.Check
+                                                type="radio"
+                                                label="Home"
+                                                inline
+                                                name="formHorizontalRadios"
+                                                id="formHorizontalRadios1"
+                                                value="Home"
+                                            />
+                                            <Form.Check
+                                                type="radio"
+                                                label="Office"
+                                                inline
+                                                name="formHorizontalRadios"
+                                                id="formHorizontalRadios2"
+                                                value="Office"
+                                            />
+                                            <Form.Check
+                                                type="radio"
+                                                label="Other"
+                                                inline
+                                                name="formHorizontalRadios"
+                                                id="formHorizontalRadios3"
+                                                value="Other"
+                                            />
+                                        </Col>
+                                    </Form.Group>
+                                </fieldset>
                             </div>
                         </div>
                         <div className="ContinueButtons">
@@ -282,7 +303,7 @@ export default function CartBooks() {
                             )
                         })}
                         <div className="addedToBagss">
-                            <button type="button" className="Checkout">CHECKOUT</button>
+                            <button type="button" className="Checkout" onClick={checkoutHandler}>CHECKOUT</button>
                         </div>
 
                     </Card>}
