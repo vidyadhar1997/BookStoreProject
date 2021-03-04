@@ -5,6 +5,7 @@ import "../CartBooks/CartBooks.scss"
 import AppBar from '../AppBar/AppBar';
 import { EditCustomerDetails, getAllCartBooks, removeFromCart, updateToCart, OrderBookDetails } from '../../services/cartServices';
 import { useHistory } from 'react-router-dom';
+import { getAllWishListBooks } from '../../services/wishListServices';
 const bookImageData = require('../../assets/bookImage.json')
 
 export default function CartBooks() {
@@ -14,6 +15,18 @@ export default function CartBooks() {
 
     const PlaceOrderDetails = () => {
         setCard(!card)
+    }
+
+    const [WhisListbooks, setWishListBooks] = React.useState([]);
+    const getAllWishListBook = () => {
+         getAllWishListBooks().then((responce) => {
+            if (responce.status === 200) {
+                console.log("responce cart ", responce)
+                setWishListBooks(responce.data.result)
+            }
+        }).catch((error) => {
+            console.log("error is ", error)
+        });
     }
 
     const [cartbooks, setCartBooks] = React.useState([]);
@@ -29,6 +42,7 @@ export default function CartBooks() {
     }
     useEffect(() => {
         getAllCartsBooks()
+        getAllWishListBook()
     }, []);
 
 
@@ -173,7 +187,7 @@ export default function CartBooks() {
 
     return (
         <div className="CartBookContainer">
-            <AppBar />
+            <AppBar counts={cartbooks.length} countsWishlist={WhisListbooks.length}/>
             <Col className="Columnsssssssss">
                 <Card className="cardsssssssssss">
                     <div className="MyCart">My Cart ({cartbooks.length})</div>

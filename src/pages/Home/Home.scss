@@ -1,10 +1,15 @@
 .HomeContainessssr{
     width: 100%;
 }
-.stylehomel{
+.HomeContainessssr > .col{
     display: grid;
-    justify-content: flex-start;
+    justify-content:center;
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    // align-content: center;
 }

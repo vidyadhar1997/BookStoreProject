@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../OrderSummary/OrderSummary.scss'
 import CheckoutImage from "../../assets/orderSummaryimg.jpg"
 import AppBar from '../AppBar/AppBar';
 import { useHistory } from 'react-router-dom';
+import { getAllWishListBooks } from '../../services/wishListServices';
 
 export default function OrderSummary() {
 
@@ -10,10 +11,25 @@ export default function OrderSummary() {
     const shoppingHandler=()=>{
         historys.push('/home');
     }
+
+    const [WhisListbooks, setWishListBooks] = React.useState([]);
+    const getAllWishListBook = () => {
+         getAllWishListBooks().then((responce) => {
+            if (responce.status === 200) {
+                console.log("responce cart ", responce)
+                setWishListBooks(responce.data.result)
+            }
+        }).catch((error) => {
+            console.log("error is ", error)
+        });
+    }
+    useEffect(() => {
+        getAllWishListBook()
+    }, []);
+
     return (
         <div>
-        <AppBar/>
-        
+        <AppBar countsWishlist={WhisListbooks.length} counts={0}/>
         <div className="ordersummaryPage">
             <div className="summary">
                 <div className="ordersummaryimage">

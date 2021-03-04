@@ -49,12 +49,33 @@ input.mr-sm-2.form-control{
     justify-content: center;
     align-items: center;
 }
+#cartsCounts{
+    margin-top: -161%;
+    margin-left: 37%;
+    color: white;
+    
+}
+
+#wishlistCounts{
+    margin-top: -90%;
+    margin-left: 37%;
+}
 
 .Wishlist{
     margin-right: 18%;
 }
 @media screen and (max-width: 480px) {
     .booksss {
-        margin-left: 2%;
+        margin-left: -4%;
+    }
+    .cart {
+        margin-left: 8%;
+        margin-right: 2%;
+    }
+    .Wishlist {
+        margin-right: -7%;
+    }
+    .cartContainer {
+        margin-left: -7%;
     }
 }

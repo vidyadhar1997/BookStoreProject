@@ -6,7 +6,7 @@ import "../Dashbord/DisplayBook.scss"
 import AppBar from '../AppBar/AppBar';
 import { Col } from 'react-bootstrap';
 const bookImageData = require('../../assets/bookImage.json')
-import { addToCart } from '../../services/cartServices';
+import { addToCart, getAllCartBooks } from '../../services/cartServices';
 
 export default function WishList(){
 
@@ -36,8 +36,21 @@ export default function WishList(){
         })
     }
 
+    const [cartbooks, setCartBooks] = React.useState([]);
+    const getAllCartsBooks = () => {
+        getAllCartBooks().then((responce) => {
+            if (responce.status === 200) {
+                console.log("responce cart ", responce)
+                setCartBooks(responce.data.result)
+            }
+        }).catch((error) => {
+            console.log("error is ", error)
+        });
+    }
+
     useEffect(() => {
         getAllWishListBook()
+        getAllCartsBooks()
     }, []);
 
    
@@ -56,7 +69,7 @@ export default function WishList(){
 
     return (
         <div>
-    <AppBar/>
+    <AppBar countsWishlist={WhisListbooks.length} counts={cartbooks.length}/>
     <Col className="stylehome">
         <div >
             <div className="BooksCounts">
