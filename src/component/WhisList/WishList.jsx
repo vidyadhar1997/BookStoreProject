@@ -77,7 +77,7 @@ export default function WishList(){
             
             </div>
             <div className="bookContainers">
-                {WhisListbooks.map((note, index) => {
+                {WhisListbooks.filter((i)=>i.product_id != null).map((note, index) => {
                     return (
                         <div className="main-card-con" key={index}>
                             <Card>

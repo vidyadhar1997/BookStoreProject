@@ -160,7 +160,7 @@ export default function CartBooks() {
 
     const history = useHistory();
     const checkoutHandler = () => {
-        cartbooks.map((order, index) => {
+        cartbooks.filter((i)=>i.product_id != null).map((order, index) => {
             console.log("product_id._id", order.product_id._id)
             console.log("product_id.bookName", order.product_id.bookName)
             console.log("product_id.quantity", order.quantityToBuy)
@@ -191,7 +191,7 @@ export default function CartBooks() {
             <Col className="Columnsssssssss">
                 <Card className="cardsssssssssss">
                     <div className="MyCart">My Cart ({cartbooks.length})</div>
-                    {cartbooks.map((cartbook, index) => {
+                    {cartbooks.filter((i)=>i.product_id != null).map((cartbook, index) => {
                         return (
 
                             <div className="cardContainerss">
@@ -301,7 +301,7 @@ export default function CartBooks() {
             </Card> :
                     <Card className="cardsssssssssss">
                         <div className="OrderSummary">Order summery</div>
-                        {cartbooks.map((cartbook, index) => {
+                        {cartbooks.filter((i)=>i.product_id != null).map((cartbook, index) => {
                             return (
                                 <div className="cardOrderContainerss">
                                     <div>

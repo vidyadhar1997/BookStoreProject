@@ -64,7 +64,7 @@ export default function Login() {
             
                 if (responce.status === 200) 
                 {
-                   var value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDNjZTk0NjkxNDc0YTAwMTU1OGNhMjUiLCJpYXQiOjE2MTQ4MzA3MTIsImV4cCI6MTYxNDkxNzExMn0.AK2QGntx0b08Q0fiRTyEGxYYuZH92SU_nloJ_OJooqc"
+                   var value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDNjZTk0NjkxNDc0YTAwMTU1OGNhMjUiLCJpYXQiOjE2MTYzODk5OTksImV4cCI6MTYxNjQ3NjM5OX0.QtPbi7PNO1Dm1shF5jWZwAdADRGvT9RaZYSg_i-OiIc"
 
                     localStorage.setItem('token',value)
                     // localStorage.setItem('userId',responce.data.userId)

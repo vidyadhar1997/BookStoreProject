@@ -64,8 +64,8 @@ export default function DisplayBook(props) {
                 </div>
             </div>
             <div className="bookContainer">
-
-                {(isNoteSort?(isLowTOHigh?(props.item.sort((a, b) => a.price > b.price ? 1 : -1)):(props.item.sort((a, b) => a.price < b.price ? 1 : -1))):props.item.filter((i) => i.bookName.includes(props.searchData.toString()))).map((note, index) => {
+                {
+                (isNoteSort?(isLowTOHigh?(props.item.sort((a, b) => a.price > b.price ? 1 : -1)):(props.item.sort((a, b) => a.price < b.price ? 1 : -1))):props.item.filter((i) => i.bookName.includes(props.searchData.toString()))).map((note, index) => {
                     return (
                         <div className="main-card-con" key={index}>
                             <Card>
@@ -88,8 +88,6 @@ export default function DisplayBook(props) {
                                             {(note._id === bookID) ? !iswishlist?<button type="button" className="addedToBag">ADDED TO BAG</button>:<button type="button" className="addedToWishlist">ADDED TO WISHLIST</button> : <button type="button" className="bagButton" onClick={() => addToBag(note)}>ADD TO BAG</button>}
                                             {(note._id != bookID) ? <button type="button" className="wishlistButton" onClick={() => addToWhislists(note)}>WISHLIST</button> : undefined}
                                         </div>
-
-
                                     </div>
                                 </div>
 

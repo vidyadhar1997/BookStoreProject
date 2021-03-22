@@ -25,6 +25,10 @@ export default function AppBar(props) {
     const handleWhishList=()=>{
         history.push('/wishlist');
     }
+    
+    const BookStoreHandler=()=>{
+        history.push('/home')
+    }
 
     return (
         <div className="AppBar">
@@ -33,7 +37,7 @@ export default function AppBar(props) {
                     <div className="booksss">
                         <img className="booksImage" src={BookImage} />
                     </div>
-                    <Navbar.Brand>Bookstore</Navbar.Brand>
+                    <Navbar.Brand onClick={BookStoreHandler}>Bookstore</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Form >
